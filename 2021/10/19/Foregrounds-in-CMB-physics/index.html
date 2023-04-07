@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>Foregrounds in CMB physics - Jinyi Blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Jinyi Blog"><meta name="msapplication-TileImage" content="/img/favicon.ico"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Jinyi Blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="前景最关键的地方在于给不同类型的前景建模，找到和观测最符合的SED（Spectral Energy Distribution），这样才能在多频段观测的 CMB 实验中进行精确的 component seperation 过程。"><meta property="og:type" content="blog"><meta property="og:title" content="Foregrounds in CMB physics"><meta property="og:url" content="https://jinyiliu.github.io/2021/10/19/Foregrounds-in-CMB-physics/"><meta property="og:site_name" content="Jinyi Blog"><meta property="og:description" content="前景最关键的地方在于给不同类型的前景建模，找到和观测最符合的SED（Spectral Energy Distribution），这样才能在多频段观测的 CMB 实验中进行精确的 component seperation 过程。"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://jinyiliu.github.io/2021/10/19/Foregrounds-in-CMB-physics/foregrounds_amplitude_temp.png"><meta property="og:image" content="https://jinyiliu.github.io/2021/10/19/Foregrounds-in-CMB-physics/foregrounds_amplitude_pol.png"><meta property="og:image" content="https://jinyiliu.github.io/2021/10/19/Foregrounds-in-CMB-physics/synchrotron.png"><meta property="og:image" content="https://jinyiliu.github.io/2021/10/19/Foregrounds-in-CMB-physics/synch_beamming.gif"><meta property="og:image" content="https://jinyiliu.github.io/2021/10/19/Foregrounds-in-CMB-physics/meisner_and_finkbeiner.png"><meta property="og:image" content="https://jinyiliu.github.io/2021/10/19/Foregrounds-in-CMB-physics/Planck_dust_density.png"><meta property="og:image" content="https://jinyiliu.github.io/2021/10/19/Foregrounds-in-CMB-physics/HI_column_density.png"><meta property="og:image" content="https://jinyiliu.github.io/2021/10/19/Foregrounds-in-CMB-physics/CIB.png"><meta property="og:image" content="https://jinyiliu.github.io/2021/10/19/Foregrounds-in-CMB-physics/zodiacal_light.jpeg"><meta property="og:image" content="https://jinyiliu.github.io/2021/10/19/Foregrounds-in-CMB-physics/zodiacal_spatical_dependent.png"><meta property="article:published_time" content="2021-10-19T08:39:12.000Z"><meta property="article:modified_time" content="2023-04-07T11:48:27.585Z"><meta property="article:author" content="Jinyi"><meta property="article:tag" content="CMB"><meta property="article:tag" content="Physics"><meta property="article:tag" content="AST9240"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://jinyiliu.github.io/2021/10/19/Foregrounds-in-CMB-physics/foregrounds_amplitude_temp.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://jinyiliu.github.io/2021/10/19/Foregrounds-in-CMB-physics/"},"headline":"Foregrounds in CMB physics","image":["https://jinyiliu.github.io/2021/10/19/Foregrounds-in-CMB-physics/foregrounds_amplitude_temp.png","https://jinyiliu.github.io/2021/10/19/Foregrounds-in-CMB-physics/foregrounds_amplitude_pol.png","https://jinyiliu.github.io/2021/10/19/Foregrounds-in-CMB-physics/synchrotron.png","https://jinyiliu.github.io/2021/10/19/Foregrounds-in-CMB-physics/synch_beamming.gif","https://jinyiliu.github.io/2021/10/19/Foregrounds-in-CMB-physics/meisner_and_finkbeiner.png","https://jinyiliu.github.io/2021/10/19/Foregrounds-in-CMB-physics/Planck_dust_density.png","https://jinyiliu.github.io/2021/10/19/Foregrounds-in-CMB-physics/HI_column_density.png","https://jinyiliu.github.io/2021/10/19/Foregrounds-in-CMB-physics/CIB.png","https://jinyiliu.github.io/2021/10/19/Foregrounds-in-CMB-physics/zodiacal_spatical_dependent.png"],"datePublished":"2021-10-19T08:39:12.000Z","dateModified":"2023-04-07T11:48:27.585Z","author":{"@type":"Person","name":"Jinyi"},"publisher":{"@type":"Organization","name":"Jinyi Blog","logo":{"@type":"ImageObject","url":"https://jinyiliu.github.io/img/favicon.ico"}},"description":"前景最关键的地方在于给不同类型的前景建模，找到和观测最符合的SED（Spectral Energy Distribution），这样才能在多频段观测的 CMB 实验中进行精确的 component seperation 过程。"}</script><link rel="canonical" href="https://jinyiliu.github.io/2021/10/19/Foregrounds-in-CMB-physics/"><link rel="icon" href="/img/favicon.ico"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/favicon.ico" alt="Jinyi Blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2021-10-19T08:39:12.000Z" title="10/19/2021, 10:39:12 AM">2021-10-19</time></span><span class="level-item">Updated&nbsp;<time dateTime="2023-04-07T11:48:27.585Z" title="4/7/2023, 1:48:27 PM">2023-04-07</time></span></div></div><h1 class="title is-3 is-size-4-mobile">Foregrounds in CMB physics</h1><div class="content"><p>前景最关键的地方在于给不同类型的前景建模，找到和观测最符合的SED（Spectral Energy Distribution），这样才能在多频段观测的 CMB 实验中进行精确的 component seperation 过程。</p>
+<span id="more"></span>
+
+<h2 id="Overview"><a href="#Overview" class="headerlink" title="Overview"></a><strong>Overview</strong></h2><div style="text-align:center">
+<img src="/2021/10/19/Foregrounds-in-CMB-physics/foregrounds_amplitude_temp.png" class="" width="490">
+<img src="/2021/10/19/Foregrounds-in-CMB-physics/foregrounds_amplitude_pol.png" class="" width="487" alt="Temprature (top) and polarization (bottom) amplitude rms as a function of frequency and astrophysical components [Planck Coll. X 2016]">
+</div>
+
+
+
+<h2 id="Synchrotron"><a href="#Synchrotron" class="headerlink" title="Synchrotron"></a><strong>Synchrotron</strong></h2><p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=T3d15LjFzVA&list=PL0b6j-KLIuQMC1z2JjJYDdypUECWfIkH2&index=8">AST9240 - Synchrotron Emission</a></p>
+<h3 id="Start-with-Single-particel-to-ensemble"><a href="#Start-with-Single-particel-to-ensemble" class="headerlink" title="Start with Single particel to ensemble"></a><strong>Start with Single particel to ensemble</strong></h3><p>相对论性电子在磁场中的运动方程是</p>
+<p>\[\frac{\mathrm{d}}{\mathrm{d}t}(\gamma m_e \bm{v})&#x3D;\frac{e}{c}(\bm{v}\times \bm{B})  \]</p>
+<p>磁场不做功，所以有</p>
+<p>\[\frac{\mathrm{d}}{\mathrm{d}t}(\gamma m_e c^2)&#x3D;0 \\ \frac{\mathrm{d}\gamma}{\mathrm{d}t}&#x3D;0 \]</p>
+<p>之前的运动方程变成</p>
+<p>\[ \gamma m_e\frac{\mathrm{d}\bm{v}}{\mathrm{d}t}&#x3D;\frac{e}{c}(\bm{v}\times\bm{B}) \]</p>
+<p>将速度分解为平行于磁场的方向和垂直于磁场的方向，的到两个方程</p>
+<p>\[\frac{\mathrm{d}\bm{v}_\parallel}{\mathrm{d}t}&#x3D;0 \\ \frac{\mathrm{d}\bm{v}_\bot}{\mathrm{d}t}&#x3D;\frac{e}{\gamma m_e c}\bm{v}_\bot\times\bm{B}  \]</p>
+<p>垂直于磁场方向的运动就是匀速圆周运动。可以的到同步辐射的示意图</p>
+<div style="text-align:center">
+<img src="/2021/10/19/Foregrounds-in-CMB-physics/synchrotron.png" class="" width="400">
+</div>
+<br/>
+
+<p><strong>Gyration frequency</strong></p>
+<p>\[ \omega&#x3D;\frac{eB}{\gamma m_e c} \]</p>
+<p><strong>Power emitted</strong></p>
+<p>\[ P&#x3D;\frac{2e^2\gamma^4\omega^2 v^2_\bot}{3c^2} \]</p>
+<p>在非相对论的情况下（cyclotron radiation），观测者在任何一个角度看到的磁场频率都是 \(\omega\)，观测者看到的频谱在 \(\omega\)处有一个非常尖锐的峰值。但是在非相对论的情况下，因为存在集束效应（beamming effect），频谱会拓宽一些。</p>
+<div style="text-align:center">
+<img src="/2021/10/19/Foregrounds-in-CMB-physics/synch_beamming.gif" class="" width="400">
+</div>
+<br/>
+
+<p>可以证明在频率 \(\omega\) 处辐射功率是</p>
+<p>\[ P(\omega)&#x3D;\frac{\sqrt{3}}{2\pi}\frac{e^3B\sin\alpha}{m_e c^2}F\left(\frac{\omega}{\omega_c}\right) \]</p>
+<p>其中</p>
+<p>\[ \omega_c&#x3D;\frac{3\gamma^2 eB\sin\alpha}{2m_e c} \]</p>
+<p>假设电子的能量分布符合幂律分布</p>
+<p>\[ N(\gamma)\mathrm{d}\gamma&#x3D;N_0\gamma^{-p}\mathrm{d}\gamma \]</p>
+<p>那么</p>
+<p>\[ P(\omega)\propto \int_{\gamma_1}^{\gamma_2} F\left(\frac{\omega}{\omega_c} \right)\gamma^{-p} \mathrm{d}\gamma \]</p>
+<p>下面把 \(x&#x3D;\omega&#x2F;\omega_c\)</p>
+<p>\[ P(\omega)\propto \omega^{-(p-1)&#x2F;2} \int_{x_1}^{x_2} F(x)x^{(p-3)&#x2F;2}\mathrm{d}x \]</p>
+<p>只要积分区间足够大，上面就可以简化为</p>
+<p>\[ \color{blue}{ P(\omega)\propto\omega^{-(p-1)&#x2F;2}  } \]</p>
+<p>可以看出同步辐射的SED只依赖于电子能量分布。在有更强的磁场的地方，电子的能量更高，但是这不会改变同步辐射能谱的形状。我们现在的观测有 \(p&#x3D;3\) 左右。</p>
+<h3 id="Polarization"><a href="#Polarization" class="headerlink" title="Polarization"></a><strong>Polarization</strong></h3><p>同步辐射的光子中是偏振光子的百分率是</p>
+<p>\[ \Pi&#x3D;\frac{p+1}{p+7&#x2F;3} \]</p>
+<p>对于 \(p&#x3D;3\) 的情况，有75%的同步辐射光子都是偏振的。</p>
+<h3 id="Faraday-Rotation"><a href="#Faraday-Rotation" class="headerlink" title="Faraday Rotation"></a><strong>Faraday Rotation</strong></h3><p>同步辐射建模的其中一个困难在于法拉第旋转，尤其在低频。</p>
+<h3 id="Data"><a href="#Data" class="headerlink" title="Data"></a><strong>Data</strong></h3><ul>
+<li>Halsam</li>
+<li>S-PASS</li>
+<li>C-BASS</li>
+<li>QUIJOTE</li>
+</ul>
+<h3 id="Spetral-Index-Variantions"><a href="#Spetral-Index-Variantions" class="headerlink" title="Spetral Index Variantions"></a><strong>Spetral Index Variantions</strong></h3><p>在不同区域，电子能量分布的谱指数 \(p\)是不一样的。</p>
+<h3 id="Synchrotron-Dust-Correlation"><a href="#Synchrotron-Dust-Correlation" class="headerlink" title="Synchrotron-Dust Correlation"></a><strong>Synchrotron-Dust Correlation</strong></h3><p>同步辐射和尘埃分布会有一定相关性，但是因为同步辐射同时依赖于磁场强度以及宇宙线的分布，而尘埃是不依赖于磁场强度的，所以相关性不会特别强。</p>
+<h2 id="Thermal-dust"><a href="#Thermal-dust" class="headerlink" title="Thermal dust"></a><strong>Thermal dust</strong></h2><p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=LB8kBo8xd3c&list=PL0b6j-KLIuQMC1z2JjJYDdypUECWfIkH2&index=9">AST9240 - Dust</a></p>
+<h3 id="Dust-Specs"><a href="#Dust-Specs" class="headerlink" title="Dust Specs"></a><strong>Dust Specs</strong></h3><ul>
+<li>Mainly composed of C, O, Mg, Si and Fe</li>
+<li>From 0.01-0.2 μm in size</li>
+<li>Absorbs starlight (UV), emits thermally (FIR)</li>
+<li>Typically ~1% of ISM mass</li>
+</ul>
+<h3 id="Observables"><a href="#Observables" class="headerlink" title="Observables"></a><strong>Observables</strong></h3><ul>
+<li>Extinction: the total extinction is significantly stronger than the polarized extinction</li>
+<li>Thermal Emission</li>
+</ul>
+<h3 id="Dust-Polarization"><a href="#Dust-Polarization" class="headerlink" title="Dust Polarization"></a><strong>Dust Polarization</strong></h3><p>The dust must be both aspherical and aligned (under magnetic field).</p>
+<p>The composition of dust grains are mostly carbonaceous and silicate in nature. Silicate features indicate robost polarization. Carbonaceous features notably lack polarization signatures.</p>
+<h3 id="SED-Modified-Blackbody-Model-MBB"><a href="#SED-Modified-Blackbody-Model-MBB" class="headerlink" title="SED: Modified Blackbody Model (MBB)"></a><strong>SED: Modified Blackbody Model (MBB)</strong></h3><p>\[ I_\nu&#x3D;A\left(\frac{\nu}{\nu_0}\right)^\beta B_\nu(T_d) \]</p>
+<p>where \(A\) is the amout of dust, \(\beta\) represents dust composition, \(T_d\) is the dust temperature. Planck found that a single modified blackbody component is adequate for describing the emission thoughout the planck data.</p>
+<p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/1410.7523">Meisner and Finkbeiner (2014)</a> prefers two components.</p>
+<div style="text-align:center">
+<img src="/2021/10/19/Foregrounds-in-CMB-physics/meisner_and_finkbeiner.png" class="" width="490">
+</div>
+<br/>
+
+<p>除了尘埃颗粒组分上的差别会影响到SED建模的难度，尘埃的空间分布也会影响。</p>
+<h3 id="SED-Variations-and-Decorrelation"><a href="#SED-Variations-and-Decorrelation" class="headerlink" title="SED Variations and Decorrelation"></a><strong>SED Variations and Decorrelation</strong></h3><p>SED建模还有一些其它困难，比如</p>
+<ul>
+<li>Dust SED may vary along the line of sight</li>
+<li>Decorrelation is a problem in polarization. Line of sight changes in magnetic field directions can enhance SED variations.</li>
+</ul>
+<p>第二个没听明白。</p>
+<h3 id="HI-Dust-Correlations"><a href="#HI-Dust-Correlations" class="headerlink" title="HI Dust Correlations"></a><strong>HI Dust Correlations</strong></h3><div style="text-align:center">
+<img src="/2021/10/19/Foregrounds-in-CMB-physics/Planck_dust_density.png" class="" width="470">
+<img src="/2021/10/19/Foregrounds-in-CMB-physics/HI_column_density.png" class="" width="470" alt="The morphology of these two abservables are very similar.">
+</div>
+
+
+<h2 id="Free-Free"><a href="#Free-Free" class="headerlink" title="Free-Free"></a><strong>Free-Free</strong></h2><p>在HII区域，电子经过带正电的离子或质子时，受到加速而产生的辐射。轫制辐射本身并不是偏振的，但是在HII区域可能会发生汤姆逊散射从而导致光子的偏振，如果我们有足够高的分辨率在HII区域是可以看到偏振光子的，但是现有的分辨率不够高，所以一般在偏振实验中不考虑轫制辐射。</p>
+<h2 id="CIB"><a href="#CIB" class="headerlink" title="CIB"></a><strong>CIB</strong></h2><p>CIB是河外一些正在形成恒星的星系辐射的，不同频段之间的CIB并没有什么相关性，所以从CMB中提取CIB信息是一件没那么容易的事情。一般而言可以利用HI来扣除银河系尘埃对CIB的污染。</p>
+<div style="text-align:center">
+<img src="/2021/10/19/Foregrounds-in-CMB-physics/CIB.png" class="" width="470">
+</div>
+
+
+<h2 id="CO"><a href="#CO" class="headerlink" title="CO"></a><strong>CO</strong></h2><p>CO分子在115GHz、230GHz、345GHz有发射线，在一些特定的区域比如大麦和小麦，有大约1%的偏振。CO会产生大约在 \(r\lesssim0.02\) 的地方产生B模式偏振。</p>
+<h2 id="AME"><a href="#AME" class="headerlink" title="AME"></a><strong>AME</strong></h2><p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=plr_JgwDPlw&list=PL0b6j-KLIuQMC1z2JjJYDdypUECWfIkH2&index=7">AST9240 - Anomalous Microwave Emission (AME)</a></p>
+<p>一个电偶极子或磁偶极子在旋转的时候会发出辐射。AME（Anomalous Microwave Emission）现阶段认为是极其小（小于1纳米）的尘埃颗粒在几十GHz上的自旋造成的，这样的辐射来源称为旋转的灰尘（spinning dust）。</p>
+<h2 id="Zodiacal-Emission"><a href="#Zodiacal-Emission" class="headerlink" title="Zodiacal Emission"></a><strong>Zodiacal Emission</strong></h2><p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=Cq1WI7nHgnQ&list=PL0b6j-KLIuQMC1z2JjJYDdypUECWfIkH2&index=5">AST9240 - Zodiacal Emission</a></p>
+<div style="text-align:center">
+<img src="/2021/10/19/Foregrounds-in-CMB-physics/zodiacal_light.jpeg" class="" width="400" alt="Zodiacal light seen from ESO.">
+</div>
+<br/>
+
+<p>上面的图片是可见光波段内太阳系内的尘埃反射太阳光而形成的，这本身不会对CMB实验产生影响，但是这些尘埃被太阳光加热而释放出FIR波段的热辐射会对CMB实验，尤其是高频波段产生干扰。</p>
+<p>Zodiacal emission is <strong>spatial dependent</strong>.</p>
+<div style="text-align:center">
+<img src="/2021/10/19/Foregrounds-in-CMB-physics/zodiacal_spatical_dependent.png" class="" alt="Observer location dependent.">
+</div>
+<br/>
+
+<p>黄道辐射和空间位置是相关的，所以最后观测到的黄道辐射和具体的巡天策略有关，不同的实验是不一样的。Planck实验中黄道辐射在857GHz频段最明显，但是对于现阶段的阿里实验，我猜想应该不太需要考虑来自黄道的辐射。</p>
+<p>There is no universal template for zodiacal emission. We need to make custom maps for each dataset. To produce such maps, we need</p>
+<ul>
+<li>A model of the interplanetary dust</li>
+<li>Perform line-of-sight integrals for each observation</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://www.aanda.org/articles/aa/pdf/2014/11/aa21562-13.pdf">Planck 2013 results. XIV. Zodiacal Emission</a></p>
+<br/>
+</div><div class="article-licensing box"><div class="licensing-title"><p>Foregrounds in CMB physics</p><p><a href="https://jinyiliu.github.io/2021/10/19/Foregrounds-in-CMB-physics/">https://jinyiliu.github.io/2021/10/19/Foregrounds-in-CMB-physics/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>Jinyi</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2021-10-19</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2023-04-07</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/CMB/">CMB</a><a class="link-muted mr-2" rel="tag" href="/tags/Physics/">Physics</a><a class="link-muted mr-2" rel="tag" href="/tags/AST9240/">AST9240</a></div><!--!--></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">Like this article? Support the author with</h3><div class="buttons is-centered"><a class="button donate" href="https://www.buymeacoffee.com/jinyiliu" target="_blank" rel="noopener" data-type="buymeacoffee"><span class="icon is-small"><i class="fas fa-coffee"></i></span><span>Buy me a coffee</span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2021/11/08/Sampling-Methods/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Sampling Methods</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2021/10/18/Units-in-CMB-physics/"><span class="level-item">Units in CMB physics</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.jpg" alt="刘晋弋"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">刘晋弋</p><p class="is-size-6 is-block">Master in Astrophysics</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Leiden, Nederland</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">23</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">0</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">13</p></a></div></div></nav><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/jinyiliu"><i class="fab fa-github"></i></a></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/AST9240/"><span class="tag">AST9240</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/CMB/"><span class="tag">CMB</span><span class="tag">7</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Life/"><span class="tag">Life</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Linux/"><span class="tag">Linux</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Physics/"><span class="tag">Physics</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/RadioAstro/"><span class="tag">RadioAstro</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/SIW2022/"><span class="tag">SIW2022</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/WeakLensing/"><span class="tag">WeakLensing</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/blog/"><span class="tag">blog</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/bnu/"><span class="tag">bnu</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/mac/"><span class="tag">mac</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/math/"><span class="tag">math</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/vim/"><span class="tag">vim</span><span class="tag">1</span></a></div></div></div></div></div><div class="column-right-shadow is-hidden-widescreen is-sticky"></div></div><div class="column column-right is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only order-3 is-sticky"><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">Catalogue</h3><ul class="menu-list"><li><a class="level is-mobile" href="#Overview"><span class="level-left"><span class="level-item">1</span><span class="level-item">Overview</span></span></a></li><li><a class="level is-mobile" href="#Synchrotron"><span class="level-left"><span class="level-item">2</span><span class="level-item">Synchrotron</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Start-with-Single-particel-to-ensemble"><span class="level-left"><span class="level-item">2.1</span><span class="level-item">Start with Single particel to ensemble</span></span></a></li><li><a class="level is-mobile" href="#Polarization"><span class="level-left"><span class="level-item">2.2</span><span class="level-item">Polarization</span></span></a></li><li><a class="level is-mobile" href="#Faraday-Rotation"><span class="level-left"><span class="level-item">2.3</span><span class="level-item">Faraday Rotation</span></span></a></li><li><a class="level is-mobile" href="#Data"><span class="level-left"><span class="level-item">2.4</span><span class="level-item">Data</span></span></a></li><li><a class="level is-mobile" href="#Spetral-Index-Variantions"><span class="level-left"><span class="level-item">2.5</span><span class="level-item">Spetral Index Variantions</span></span></a></li><li><a class="level is-mobile" href="#Synchrotron-Dust-Correlation"><span class="level-left"><span class="level-item">2.6</span><span class="level-item">Synchrotron-Dust Correlation</span></span></a></li></ul></li><li><a class="level is-mobile" href="#Thermal-dust"><span class="level-left"><span class="level-item">3</span><span class="level-item">Thermal dust</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Dust-Specs"><span class="level-left"><span class="level-item">3.1</span><span class="level-item">Dust Specs</span></span></a></li><li><a class="level is-mobile" href="#Observables"><span class="level-left"><span class="level-item">3.2</span><span class="level-item">Observables</span></span></a></li><li><a class="level is-mobile" href="#Dust-Polarization"><span class="level-left"><span class="level-item">3.3</span><span class="level-item">Dust Polarization</span></span></a></li><li><a class="level is-mobile" href="#SED-Modified-Blackbody-Model-MBB"><span class="level-left"><span class="level-item">3.4</span><span class="level-item">SED: Modified Blackbody Model (MBB)</span></span></a></li><li><a class="level is-mobile" href="#SED-Variations-and-Decorrelation"><span class="level-left"><span class="level-item">3.5</span><span class="level-item">SED Variations and Decorrelation</span></span></a></li><li><a class="level is-mobile" href="#HI-Dust-Correlations"><span class="level-left"><span class="level-item">3.6</span><span class="level-item">HI Dust Correlations</span></span></a></li></ul></li><li><a class="level is-mobile" href="#Free-Free"><span class="level-left"><span class="level-item">4</span><span class="level-item">Free-Free</span></span></a></li><li><a class="level is-mobile" href="#CIB"><span class="level-left"><span class="level-item">5</span><span class="level-item">CIB</span></span></a></li><li><a class="level is-mobile" href="#CO"><span class="level-left"><span class="level-item">6</span><span class="level-item">CO</span></span></a></li><li><a class="level is-mobile" href="#AME"><span class="level-left"><span class="level-item">7</span><span class="level-item">AME</span></span></a></li><li><a class="level is-mobile" href="#Zodiacal-Emission"><span class="level-left"><span class="level-item">8</span><span class="level-item">Zodiacal Emission</span></span></a></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/favicon.ico" alt="Jinyi Blog" height="28"></a><p class="is-size-7"><span>&copy; 2023 Jinyi</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "This website uses cookies to improve your experience.",
+          dismiss: "Got it!",
+          allow: "Allow cookies",
+          deny: "Decline",
+          link: "Learn more",
+          policy: "Cookie Policy",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js" defer></script><script>window.addEventListener("load", function() {
+            document.querySelectorAll('[role="article"] > .content').forEach(function(element) {
+                renderMathInElement(element);
+            });
+        });</script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
+        });</script></body></html>

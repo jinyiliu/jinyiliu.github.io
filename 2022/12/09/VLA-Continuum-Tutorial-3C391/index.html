@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>VLA Continuum Tutorial 3C391 - Jinyi Blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Jinyi Blog"><meta name="msapplication-TileImage" content="/img/favicon.ico"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Jinyi Blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="VLA Continuum Tutorial 3C391-CASA5.5.0"><meta property="og:type" content="blog"><meta property="og:title" content="VLA Continuum Tutorial 3C391"><meta property="og:url" content="https://jinyiliu.github.io/2022/12/09/VLA-Continuum-Tutorial-3C391/"><meta property="og:site_name" content="Jinyi Blog"><meta property="og:description" content="VLA Continuum Tutorial 3C391-CASA5.5.0"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://jinyiliu.github.io/2022/12/09/VLA-Continuum-Tutorial-3C391/Amp_Time.png"><meta property="og:image" content="https://jinyiliu.github.io/2022/12/09/VLA-Continuum-Tutorial-3C391/Amp_Scan.png"><meta property="og:image" content="https://jinyiliu.github.io/2022/12/09/VLA-Continuum-Tutorial-3C391/Antenna1_Time.png"><meta property="og:image" content="https://jinyiliu.github.io/2022/12/09/VLA-Continuum-Tutorial-3C391/Amp_UVdist_3C286.png"><meta property="og:image" content="https://jinyiliu.github.io/2022/12/09/VLA-Continuum-Tutorial-3C391/Amp_UVdist_3C391_C2.png"><meta property="og:image" content="https://jinyiliu.github.io/2022/12/09/VLA-Continuum-Tutorial-3C391/Phase_Frequency_3C286_ea01&amp;ea21.png"><meta property="og:image" content="https://jinyiliu.github.io/2022/12/09/VLA-Continuum-Tutorial-3C391/ant.png"><meta property="og:image" content="https://jinyiliu.github.io/2022/12/09/VLA-Continuum-Tutorial-3C391/G0all_GainPhase_Time_ea21.png"><meta property="og:image" content="https://jinyiliu.github.io/2022/12/09/VLA-Continuum-Tutorial-3C391/G0all_GainPhase_Time_ea04.png"><meta property="og:image" content="https://jinyiliu.github.io/2022/12/09/VLA-Continuum-Tutorial-3C391/G0all_GainPhase_Time_ea05.png"><meta property="og:image" content="https://jinyiliu.github.io/2022/12/09/VLA-Continuum-Tutorial-3C391/G0_GainPhase_Time_ea03.png"><meta property="og:image" content="https://jinyiliu.github.io/2022/12/09/VLA-Continuum-Tutorial-3C391/G0_GainPhase_Time_ea04.png"><meta property="og:image" content="https://jinyiliu.github.io/2022/12/09/VLA-Continuum-Tutorial-3C391/delay.png"><meta property="og:image" content="https://jinyiliu.github.io/2022/12/09/VLA-Continuum-Tutorial-3C391/Amp_Channel.png"><meta property="og:image" content="https://jinyiliu.github.io/2022/12/09/VLA-Continuum-Tutorial-3C391/BandpassAmp.png"><meta property="og:image" content="https://jinyiliu.github.io/2022/12/09/VLA-Continuum-Tutorial-3C391/BandpassPhase.png"><meta property="og:image" content="https://jinyiliu.github.io/2022/12/09/VLA-Continuum-Tutorial-3C391/G1-phase_Poln0,1.png"><meta property="og:image" content="https://jinyiliu.github.io/2022/12/09/VLA-Continuum-Tutorial-3C391/G1-amp_Poln0,1.png"><meta property="og:image" content="https://jinyiliu.github.io/2022/12/09/VLA-Continuum-Tutorial-3C391/3C286-corrected-Amp_Channel.png"><meta property="og:image" content="https://jinyiliu.github.io/2022/12/09/VLA-Continuum-Tutorial-3C391/3C286-corrected-Phase_Channel.png"><meta property="og:image" content="https://jinyiliu.github.io/2022/12/09/VLA-Continuum-Tutorial-3C391/3C391-calibrated-Amp_UVwave.png"><meta property="og:image" content="https://jinyiliu.github.io/2022/12/09/VLA-Continuum-Tutorial-3C391/3C391_clean_image.png"><meta property="article:published_time" content="2022-12-09T06:03:47.000Z"><meta property="article:modified_time" content="2023-04-07T11:48:27.581Z"><meta property="article:author" content="Jinyi"><meta property="article:tag" content="RadioAstro"><meta property="article:tag" content="SIW2022"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://jinyiliu.github.io/2022/12/09/VLA-Continuum-Tutorial-3C391/Amp_Time.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://jinyiliu.github.io/2022/12/09/VLA-Continuum-Tutorial-3C391/"},"headline":"VLA Continuum Tutorial 3C391","image":["https://jinyiliu.github.io/2022/12/09/VLA-Continuum-Tutorial-3C391/Amp_Time.png","https://jinyiliu.github.io/2022/12/09/VLA-Continuum-Tutorial-3C391/Amp_Scan.png","https://jinyiliu.github.io/2022/12/09/VLA-Continuum-Tutorial-3C391/Antenna1_Time.png","https://jinyiliu.github.io/2022/12/09/VLA-Continuum-Tutorial-3C391/Amp_UVdist_3C286.png","https://jinyiliu.github.io/2022/12/09/VLA-Continuum-Tutorial-3C391/Amp_UVdist_3C391_C2.png","https://jinyiliu.github.io/2022/12/09/VLA-Continuum-Tutorial-3C391/Phase_Frequency_3C286_ea01&ea21.png","https://jinyiliu.github.io/2022/12/09/VLA-Continuum-Tutorial-3C391/ant.png","https://jinyiliu.github.io/2022/12/09/VLA-Continuum-Tutorial-3C391/G0all_GainPhase_Time_ea21.png","https://jinyiliu.github.io/2022/12/09/VLA-Continuum-Tutorial-3C391/G0all_GainPhase_Time_ea04.png","https://jinyiliu.github.io/2022/12/09/VLA-Continuum-Tutorial-3C391/G0all_GainPhase_Time_ea05.png","https://jinyiliu.github.io/2022/12/09/VLA-Continuum-Tutorial-3C391/G0_GainPhase_Time_ea03.png","https://jinyiliu.github.io/2022/12/09/VLA-Continuum-Tutorial-3C391/G0_GainPhase_Time_ea04.png","https://jinyiliu.github.io/2022/12/09/VLA-Continuum-Tutorial-3C391/delay.png","https://jinyiliu.github.io/2022/12/09/VLA-Continuum-Tutorial-3C391/Amp_Channel.png","https://jinyiliu.github.io/2022/12/09/VLA-Continuum-Tutorial-3C391/BandpassAmp.png","https://jinyiliu.github.io/2022/12/09/VLA-Continuum-Tutorial-3C391/BandpassPhase.png","https://jinyiliu.github.io/2022/12/09/VLA-Continuum-Tutorial-3C391/G1-phase_Poln0,1.png","https://jinyiliu.github.io/2022/12/09/VLA-Continuum-Tutorial-3C391/G1-amp_Poln0,1.png","https://jinyiliu.github.io/2022/12/09/VLA-Continuum-Tutorial-3C391/3C286-corrected-Amp_Channel.png","https://jinyiliu.github.io/2022/12/09/VLA-Continuum-Tutorial-3C391/3C286-corrected-Phase_Channel.png","https://jinyiliu.github.io/2022/12/09/VLA-Continuum-Tutorial-3C391/3C391-calibrated-Amp_UVwave.png","https://jinyiliu.github.io/2022/12/09/VLA-Continuum-Tutorial-3C391/3C391_clean_image.png"],"datePublished":"2022-12-09T06:03:47.000Z","dateModified":"2023-04-07T11:48:27.581Z","author":{"@type":"Person","name":"Jinyi"},"publisher":{"@type":"Organization","name":"Jinyi Blog","logo":{"@type":"ImageObject","url":"https://jinyiliu.github.io/img/favicon.ico"}},"description":"VLA Continuum Tutorial 3C391-CASA5.5.0"}</script><link rel="canonical" href="https://jinyiliu.github.io/2022/12/09/VLA-Continuum-Tutorial-3C391/"><link rel="icon" href="/img/favicon.ico"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/favicon.ico" alt="Jinyi Blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2022-12-09T06:03:47.000Z" title="12/9/2022, 7:03:47 AM">2022-12-09</time></span><span class="level-item">Updated&nbsp;<time dateTime="2023-04-07T11:48:27.581Z" title="4/7/2023, 1:48:27 PM">2023-04-07</time></span></div></div><h1 class="title is-3 is-size-4-mobile">VLA Continuum Tutorial 3C391</h1><div class="content"><p><a target="_blank" rel="noopener" href="https://casaguides.nrao.edu/index.php?title=VLA_Continuum_Tutorial_3C391-CASA5.5.0">VLA Continuum Tutorial 3C391-CASA5.5.0</a></p>
+<!--3C 286 in optical and in radio-->
+
+<span id="more"></span>
+
+<p>After flagging the data.</p>
+<h2 id="Examining-the-data"><a href="#Examining-the-data" class="headerlink" title="Examining the data"></a><strong>Examining the data</strong></h2><div style="text-align:center">
+<img src="/2022/12/09/VLA-Continuum-Tutorial-3C391/Amp_Time.png" class="" alt="Black dots are observations of flex density calibrator 3C 286 which is a nearly perfect point source. Magenta dots are observations of gain calibrator. Light purple dots in the last are observations of polarization calibrators.">
+</div></br>
+
+<p>Below we can see the flagging process has taken effect.</p>
+<div style="text-align:center">
+<img src="/2022/12/09/VLA-Continuum-Tutorial-3C391/Amp_Scan.png" class="" alt="Data from Scan 1 has been flagged so we can not see them.">
+</div></br>
+
+<div style="text-align:center">
+<img src="/2022/12/09/VLA-Continuum-Tutorial-3C391/Antenna1_Time.png" class="" alt="There is no data from antenna ID 10 and 12 because their corresponding antennas ea13 and ea15 have corrupted data.">
+</div></br>
+
+<div style="text-align:center">
+<img src="/2022/12/09/VLA-Continuum-Tutorial-3C391/Amp_UVdist_3C286.png" class="" alt="Visibility amplitudes of 3C 286. Should be a horizontal line after calibration.">
+</div></br>
+
+<div style="text-align:center">
+<img src="/2022/12/09/VLA-Continuum-Tutorial-3C391/Amp_UVdist_3C391_C2.png" class="" alt="Visibility amplitudes of 3C 391 (mosaic C2).">
+</div></br>
+
+<div style="text-align:center">
+<img src="/2022/12/09/VLA-Continuum-Tutorial-3C391/Phase_Frequency_3C286_ea01&ea21.png" class="" alt="The slopes are steady over time. The two different lines for each baseline correspond to the RR and LL correlations.">
+</div></br>
+
+<p>The phase \(\color{black}\theta&#x3D;2\pi f \bm{b}\cdot\bm{s}&#x2F;c\) is linearly dependent on frequency and the slope is \(\color{black}2\pi\bm{b}\cdot\bm{s}&#x2F;c\). If we set <code>iteraxis=baseline</code> in <code>plotms</code> function, by clicking on the green arrow Next button we can switch the plots between different baselines and we will see that different baselines have different slopes.</p>
+<h2 id="Reference-Antenna"><a href="#Reference-Antenna" class="headerlink" title="Reference Antenna"></a><strong>Reference Antenna</strong></h2><p>Phase solutions are typically referred to a specific antenna. Phase corresponds to position. What we need is actually to align all the source positions to one point and it doesn’t matter where the point is.</p>
+<p>Often we require the antenna be available over the entire observation. And in general, for calibration purposes, we would like to select an antenna that is close to the center of the array (<font color="blue">but why?</font>).</p>
+<p>Use <code>plotant</code> to show the antenna positions.</p>
+<div style="text-align:center">
+<img src="/2022/12/09/VLA-Continuum-Tutorial-3C391/ant.png" class="" alt="VLA D-configuration. There are two spectral windows around 4.6 and 7.5 GHz. Observations of 3C 391 in this tutorial focus on 4.6 GHz. And there are 64 frequency channels in that spectral window.">
+</div></br>
+
+<p>We will use antenna ea21 as the ref antenna later on.</p>
+<h2 id="Calibrating-the-Data"><a href="#Calibrating-the-Data" class="headerlink" title="Calibrating the Data"></a><strong>Calibrating the Data</strong></h2><p>The calibration process in the tutorial is a bit different from the calibration lecture in the workshop. The observed visibility function is related to the true visibility by</p>
+<p>\[\color{black}V_{ij}^\prime&#x3D;b_{ij}(t)B_i(f,t)B_j^*(f,t)g_i(t)g_j(t)e^{i[\theta_i(t)-\theta_j(t)]}V_{ij}\]</p>
+<p>In <code>CASA</code> the task <code>gencal</code> can specify calibration values of various types providing a means of antenna-based calibration values mannually.</p>
+<h3 id="Antenna-Position-Corrections"><a href="#Antenna-Position-Corrections" class="headerlink" title="Antenna Position Corrections"></a><strong>Antenna Position Corrections</strong></h3><p>Specify values for \(\color{black}b_{ij}(t)\).</p>
+<h3 id="Initial-Flux-Density-Scaling"><a href="#Initial-Flux-Density-Scaling" class="headerlink" title="Initial Flux Density Scaling"></a><strong>Initial Flux Density Scaling</strong></h3><p>Use task <code>setjy</code> to place the model visibility amplitude for the flux density calibrator 3C 286. By comparison with the observed data, determine the \(\color{black}g_i\) values.</p>
+<h3 id="Initial-Phase-Calibration"><a href="#Initial-Phase-Calibration" class="headerlink" title="Initial Phase Calibration"></a><strong>Initial Phase Calibration</strong></h3><p>First we calculate the gain with task <code>gaincal</code> using all three calibrators to see if there are some bad data.</p>
+<div style="text-align:center">
+<img src="/2022/12/09/VLA-Continuum-Tutorial-3C391/G0all_GainPhase_Time_ea21.png" class="" alt="Gain phase is apparently zero for ref antenna ea21.">
+</div></br>
+
+<div style="text-align:center">
+<img src="/2022/12/09/VLA-Continuum-Tutorial-3C391/G0all_GainPhase_Time_ea04.png" class="" alt="For most antennas, we see a fairly smooth variation with time.">
+</div></br>
+
+<div style="text-align:center">
+<img src="/2022/12/09/VLA-Continuum-Tutorial-3C391/G0all_GainPhase_Time_ea05.png" class="" alt="There are phase jumps in ea05 gain phase.">
+</div></br>
+
+<p>Antennas other than ea05 look OK so we flag it from the data. And again this time we use <code>gaincal</code> to calculate the gain using only the bandpass calibrator.</p>
+<div style="text-align:center">
+<img src="/2022/12/09/VLA-Continuum-Tutorial-3C391/G0_GainPhase_Time_ea03.png" class="">
+</div></br>
+
+<div style="text-align:center">
+<img src="/2022/12/09/VLA-Continuum-Tutorial-3C391/G0_GainPhase_Time_ea04.png" class="">
+</div></br>
+
+<p><font color="blue">Still don’t completely understand this calibration step.</font></p>
+<h3 id="Delay-Calibration"><a href="#Delay-Calibration" class="headerlink" title="Delay Calibration"></a><strong>Delay Calibration</strong></h3><div style="text-align:center">
+<img src="/2022/12/09/VLA-Continuum-Tutorial-3C391/delay.png" class="" alt="This corrects the bandpass delay.">
+</div></br>
+
+<p>This step solves for the antenna-based delays (See Phase vs. Frequency plot above). Use <code>gaincal</code> with gaintype K to solve for the relative delay of each antenna relative to the reference antenna.</p>
+<p>也就是说这里修正了不同天线的时间延迟，会让上面那一张 Phase vs. Frequency 的图里的曲线变成水平直线。</p>
+<h3 id="Bandpass-Calibration"><a href="#Bandpass-Calibration" class="headerlink" title="Bandpass Calibration"></a><strong>Bandpass Calibration</strong></h3><div style="text-align:center">
+<img src="/2022/12/09/VLA-Continuum-Tutorial-3C391/Amp_Channel.png" class="" alt="Colorized by antenna2.">
+</div></br>
+
+<p>The task <code>bandpass</code> calculates the amplitude and phase as a function of frequency for each spectral window containing more than on channel. Correspondes to the complex bandpass \(\color{black}B_i(f,t)\).</p>
+<div style="text-align:center">
+<img src="/2022/12/09/VLA-Continuum-Tutorial-3C391/BandpassAmp.png" class="" alt="The black and magenta colors are RR and LL correlation respectively.">
+</div></br>
+
+<div style="text-align:center">
+<img src="/2022/12/09/VLA-Continuum-Tutorial-3C391/BandpassPhase.png" class="" alt="Bandpass phases are relatively, the slopes are removed by the delay calibration.">
+</div></br>
+
+
+
+<h3 id="Gain-Calibration"><a href="#Gain-Calibration" class="headerlink" title="Gain Calibration"></a><strong>Gain Calibration</strong></h3><p>First, they use flux density calibrator 3C 286 to calculate the appropriate complex gains \(\color{black}g_i\) and \(\color{black}\theta_i\). Second, to minimize the differences through the atmosphere between the lines of sight to the gain calibrator 3C 286 and the target source, we also need to establish relative gain amplitudes and phases for different antennas using <strong>phase calibrator</strong>. The appropriate complex gains for a direction on the sky close to the target source will be determined from the phase calibrator.</p>
+<div style="text-align:center">
+<img src="/2022/12/09/VLA-Continuum-Tutorial-3C391/G1-phase_Poln0,1.png" class="" alt="Colorized by baseline.">
+</div></br>
+
+<div style="text-align:center">
+<img src="/2022/12/09/VLA-Continuum-Tutorial-3C391/G1-amp_Poln0,1.png" class="" alt="Colorized by baseline.">
+</div></br>
+
+<p>已经开始看不明白了，就不能多写一点公式嘛！</p>
+<h3 id="Scaling-the-Amplitude-Gains"><a href="#Scaling-the-Amplitude-Gains" class="headerlink" title="Scaling the Amplitude Gains"></a><strong>Scaling the Amplitude Gains</strong></h3><p>我不理解。你为啥不理解？你要理解！真不理解。</p>
+<h3 id="Applying-the-Calibration"><a href="#Applying-the-Calibration" class="headerlink" title="Applying the Calibration"></a><strong>Applying the Calibration</strong></h3><p>Use <code>applycal</code> to apply the calibration solutions to flux density calibrators J1331-3030(3C 286), visibility phase calibrator J1822-0938, target fields in the mosaic. Then we now have fully-calibrated visibilities in the CORRECTED-DATA column of the measurement set.</p>
+<div style="text-align:center">
+<img src="/2022/12/09/VLA-Continuum-Tutorial-3C391/3C286-corrected-Amp_Channel.png" class="" alt="3C286 corrected Amp vs Channel.">
+</div></br>
+
+<div style="text-align:center">
+<img src="/2022/12/09/VLA-Continuum-Tutorial-3C391/3C286-corrected-Phase_Channel.png" class="" alt="3C286 corrected Phase vs Channel.">
+</div></br>
+
+<p>Then split off the target fields by <code>split</code> to create a new, calibrated measurement set containing all the target fields. After that, run <code>statwt</code> task to correct the data weights in the measurement set based on the variance of data.</p>
+<p>总而言之，校准完毕！</p>
+<h2 id="Imaging"><a href="#Imaging" class="headerlink" title="Imaging"></a><strong>Imaging</strong></h2><p>Examine the newly calibrated data.</p>
+<div style="text-align:center">
+<img src="/2022/12/09/VLA-Continuum-Tutorial-3C391/3C391-calibrated-Amp_UVwave.png" class="" alt="3C391 newly calibrated Amp vs UVwave.">
+</div></br>
+
+<h3 id="Imaging-parameters"><a href="#Imaging-parameters" class="headerlink" title="Imaging parameters"></a><strong>Imaging parameters</strong></h3><p>It is important to have an idea of what values to use for the image pixel (cell) size. The maximum baseline is about 16,000 wavelengths, i.e., the smallest angular scale of 12 arcseconds. <font color="red">The most effective cleaning occurs with at least 4-5 pixels across the synthesized beam</font>. As such, we can chose the value of 2.5 arcseconds as the cell size.</p>
+<p>Set the image size &#x3D; [480,480] in this case to fully cover the supernova remnant and also take into account of FFT efficiency.</p>
+<h3 id="Multi-scale-Mosaic-Clean"><a href="#Multi-scale-Mosaic-Clean" class="headerlink" title="Multi-scale Mosaic Clean"></a><strong>Multi-scale Mosaic Clean</strong></h3><p>Can’t believe this is not done automatically. I have to open a graphic viewer and select some clean regions <strong>mannually</strong> at the start of clean algorithm iterations.</p>
+<p>Finally use <code>viewer</code> to show the cleaned image. In the DATA DISPLAY OPTIONS -&gt; BASIC SETTINGS, I set the colormap to Hot Metal 2 and Scaling Power Cycles to -0.5. Here is what I get</p>
+<div style="text-align:center">
+<img src="/2022/12/09/VLA-Continuum-Tutorial-3C391/3C391_clean_image.png" class="" alt="3C391 clean image. The left bottom white circle is the beam size.">
+</div></br>
+
+
+<h3 id="Image-Analysis"><a href="#Image-Analysis" class="headerlink" title="Image Analysis"></a><strong>Image Analysis</strong></h3><p>Use CASA to determine the peak brightness, flux density and image noise level. Didn’t do this.</p>
+</div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/RadioAstro/">RadioAstro</a><a class="link-muted mr-2" rel="tag" href="/tags/SIW2022/">SIW2022</a></div><!--!--></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">Like this article? Support the author with</h3><div class="buttons is-centered"><a class="button donate" href="https://www.buymeacoffee.com/jinyiliu" target="_blank" rel="noopener" data-type="buymeacoffee"><span class="icon is-small"><i class="fas fa-coffee"></i></span><span>Buy me a coffee</span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2023/02/14/Magnification-Matrix/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Magnification Matrix</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2022/11/21/Imaging-and-Mosaicking/"><span class="level-item">Imaging and Mosaicking</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.jpg" alt="刘晋弋"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">刘晋弋</p><p class="is-size-6 is-block">Master in Astrophysics</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Leiden, Nederland</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">23</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">0</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">13</p></a></div></div></nav><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/jinyiliu"><i class="fab fa-github"></i></a></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/AST9240/"><span class="tag">AST9240</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/CMB/"><span class="tag">CMB</span><span class="tag">7</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Life/"><span class="tag">Life</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Linux/"><span class="tag">Linux</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Physics/"><span class="tag">Physics</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/RadioAstro/"><span class="tag">RadioAstro</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/SIW2022/"><span class="tag">SIW2022</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/WeakLensing/"><span class="tag">WeakLensing</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/blog/"><span class="tag">blog</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/bnu/"><span class="tag">bnu</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/mac/"><span class="tag">mac</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/math/"><span class="tag">math</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/vim/"><span class="tag">vim</span><span class="tag">1</span></a></div></div></div></div></div><div class="column-right-shadow is-hidden-widescreen is-sticky"></div></div><div class="column column-right is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only order-3 is-sticky"><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">Catalogue</h3><ul class="menu-list"><li><a class="level is-mobile" href="#Examining-the-data"><span class="level-left"><span class="level-item">1</span><span class="level-item">Examining the data</span></span></a></li><li><a class="level is-mobile" href="#Reference-Antenna"><span class="level-left"><span class="level-item">2</span><span class="level-item">Reference Antenna</span></span></a></li><li><a class="level is-mobile" href="#Calibrating-the-Data"><span class="level-left"><span class="level-item">3</span><span class="level-item">Calibrating the Data</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Antenna-Position-Corrections"><span class="level-left"><span class="level-item">3.1</span><span class="level-item">Antenna Position Corrections</span></span></a></li><li><a class="level is-mobile" href="#Initial-Flux-Density-Scaling"><span class="level-left"><span class="level-item">3.2</span><span class="level-item">Initial Flux Density Scaling</span></span></a></li><li><a class="level is-mobile" href="#Initial-Phase-Calibration"><span class="level-left"><span class="level-item">3.3</span><span class="level-item">Initial Phase Calibration</span></span></a></li><li><a class="level is-mobile" href="#Delay-Calibration"><span class="level-left"><span class="level-item">3.4</span><span class="level-item">Delay Calibration</span></span></a></li><li><a class="level is-mobile" href="#Bandpass-Calibration"><span class="level-left"><span class="level-item">3.5</span><span class="level-item">Bandpass Calibration</span></span></a></li><li><a class="level is-mobile" href="#Gain-Calibration"><span class="level-left"><span class="level-item">3.6</span><span class="level-item">Gain Calibration</span></span></a></li><li><a class="level is-mobile" href="#Scaling-the-Amplitude-Gains"><span class="level-left"><span class="level-item">3.7</span><span class="level-item">Scaling the Amplitude Gains</span></span></a></li><li><a class="level is-mobile" href="#Applying-the-Calibration"><span class="level-left"><span class="level-item">3.8</span><span class="level-item">Applying the Calibration</span></span></a></li></ul></li><li><a class="level is-mobile" href="#Imaging"><span class="level-left"><span class="level-item">4</span><span class="level-item">Imaging</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Imaging-parameters"><span class="level-left"><span class="level-item">4.1</span><span class="level-item">Imaging parameters</span></span></a></li><li><a class="level is-mobile" href="#Multi-scale-Mosaic-Clean"><span class="level-left"><span class="level-item">4.2</span><span class="level-item">Multi-scale Mosaic Clean</span></span></a></li><li><a class="level is-mobile" href="#Image-Analysis"><span class="level-left"><span class="level-item">4.3</span><span class="level-item">Image Analysis</span></span></a></li></ul></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/favicon.ico" alt="Jinyi Blog" height="28"></a><p class="is-size-7"><span>&copy; 2023 Jinyi</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'folded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "This website uses cookies to improve your experience.",
+          dismiss: "Got it!",
+          allow: "Allow cookies",
+          deny: "Decline",
+          link: "Learn more",
+          policy: "Cookie Policy",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js" defer></script><script>window.addEventListener("load", function() {
+            document.querySelectorAll('[role="article"] > .content').forEach(function(element) {
+                renderMathInElement(element);
+            });
+        });</script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
+        });</script></body></html>

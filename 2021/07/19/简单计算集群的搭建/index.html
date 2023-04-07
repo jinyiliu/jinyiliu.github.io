@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>简单计算集群的搭建 - Jinyi Blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Jinyi Blog"><meta name="msapplication-TileImage" content="/img/favicon.ico"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Jinyi Blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="这是北师大理论宇宙学课题组的小型计算集群的使用说明以及搭建过程。"><meta property="og:type" content="blog"><meta property="og:title" content="简单计算集群的搭建"><meta property="og:url" content="https://jinyiliu.github.io/2021/07/19/%E7%AE%80%E5%8D%95%E8%AE%A1%E7%AE%97%E9%9B%86%E7%BE%A4%E7%9A%84%E6%90%AD%E5%BB%BA/"><meta property="og:site_name" content="Jinyi Blog"><meta property="og:description" content="这是北师大理论宇宙学课题组的小型计算集群的使用说明以及搭建过程。"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://jinyiliu.github.io/2021/07/19/%E7%AE%80%E5%8D%95%E8%AE%A1%E7%AE%97%E9%9B%86%E7%BE%A4%E7%9A%84%E6%90%AD%E5%BB%BA/server.jpg"><meta property="og:image" content="https://jinyiliu.github.io/2021/07/19/%E7%AE%80%E5%8D%95%E8%AE%A1%E7%AE%97%E9%9B%86%E7%BE%A4%E7%9A%84%E6%90%AD%E5%BB%BA/gfsv_info.png"><meta property="og:image" content="https://jinyiliu.github.io/2021/07/19/%E7%AE%80%E5%8D%95%E8%AE%A1%E7%AE%97%E9%9B%86%E7%BE%A4%E7%9A%84%E6%90%AD%E5%BB%BA/Vivy.jpg"><meta property="article:published_time" content="2021-07-19T07:24:58.000Z"><meta property="article:modified_time" content="2023-04-07T11:48:27.630Z"><meta property="article:author" content="Jinyi"><meta property="article:tag" content="Linux"><meta property="article:tag" content="bnu"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://jinyiliu.github.io/2021/07/19/%E7%AE%80%E5%8D%95%E8%AE%A1%E7%AE%97%E9%9B%86%E7%BE%A4%E7%9A%84%E6%90%AD%E5%BB%BA/server.jpg"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://jinyiliu.github.io/2021/07/19/%E7%AE%80%E5%8D%95%E8%AE%A1%E7%AE%97%E9%9B%86%E7%BE%A4%E7%9A%84%E6%90%AD%E5%BB%BA/"},"headline":"简单计算集群的搭建","image":["https://jinyiliu.github.io/2021/07/19/%E7%AE%80%E5%8D%95%E8%AE%A1%E7%AE%97%E9%9B%86%E7%BE%A4%E7%9A%84%E6%90%AD%E5%BB%BA/server.jpg","https://jinyiliu.github.io/2021/07/19/%E7%AE%80%E5%8D%95%E8%AE%A1%E7%AE%97%E9%9B%86%E7%BE%A4%E7%9A%84%E6%90%AD%E5%BB%BA/gfsv_info.png","https://jinyiliu.github.io/2021/07/19/%E7%AE%80%E5%8D%95%E8%AE%A1%E7%AE%97%E9%9B%86%E7%BE%A4%E7%9A%84%E6%90%AD%E5%BB%BA/Vivy.jpg"],"datePublished":"2021-07-19T07:24:58.000Z","dateModified":"2023-04-07T11:48:27.630Z","author":{"@type":"Person","name":"Jinyi"},"publisher":{"@type":"Organization","name":"Jinyi Blog","logo":{"@type":"ImageObject","url":"https://jinyiliu.github.io/img/favicon.ico"}},"description":"这是北师大理论宇宙学课题组的小型计算集群的使用说明以及搭建过程。"}</script><link rel="canonical" href="https://jinyiliu.github.io/2021/07/19/%E7%AE%80%E5%8D%95%E8%AE%A1%E7%AE%97%E9%9B%86%E7%BE%A4%E7%9A%84%E6%90%AD%E5%BB%BA/"><link rel="icon" href="/img/favicon.ico"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/favicon.ico" alt="Jinyi Blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2021-07-19T07:24:58.000Z" title="7/19/2021, 9:24:58 AM">2021-07-19</time></span><span class="level-item">Updated&nbsp;<time dateTime="2023-04-07T11:48:27.630Z" title="4/7/2023, 1:48:27 PM">2023-04-07</time></span></div></div><h1 class="title is-3 is-size-4-mobile">简单计算集群的搭建</h1><div class="content"><p>这是北师大理论宇宙学课题组的小型计算集群的使用说明以及搭建过程。</p>
+<span id="more"></span>
+
+<h1 id="使用计算集群"><a href="#使用计算集群" class="headerlink" title="使用计算集群"></a><strong>使用计算集群</strong></h1><p>分为普通用户的使用和管理者的使用。</p>
+<h2 id="普通用户"><a href="#普通用户" class="headerlink" title="普通用户"></a><strong>普通用户</strong></h2><ol>
+<li>三个主机分别是novamaria、vivy和diva，需要使用校园网登录。三台主机之间互相知道对方的主机名，如果你已经登录到novamaria上，可以直接通过<code>ssh diva</code>或者<code>ssh vivy</code>访问另外两台主机。</li>
+<li>修改密码需要在三台主机上都进行修改。</li>
+<li>三个主机的用户目录<code>/home</code>内容一致，在novamaria上编辑的脚本，在vivy上也能看到，普通用户只需要选择一个计算资源宽裕的主机进行计算。</li>
+<li>文件夹<code>/data</code>是用来存放大型数据的（比如模拟等），程序脚本可以存放到各自用户目录下，<code>/data</code>文件夹一共44T的存储空间，存放数据的时候注意用<code>df -h</code>查看还有多少余量，不要超过存储上限，不然别人的数据就被覆盖了。</li>
+<li>在<code>/share</code>文件夹里有常用的公共资源，比如Anaconda3和Anaconda2的安装包等。如果对共享资源有别的需要可以直接提意见。</li>
+<li>如需连网可以使用<a target="_blank" rel="noopener" href="https://github.com/ice-tong/SrunClient">深澜命令行客户端</a>登录校园网关，在<code>/share</code>里也有资源。</li>
+<li>服务器大家一起共享，请大家为其它跑程序的同学考虑一下！一个用户最多占用所有计算资源的70%，也就是占满两台服务器左右，发现非法占用直接杀死进程，如果要跑大型并行程序，到vivy和diva上跑，因为novamaria是集群主节点，很多数据传输的工作在此服务器上进行，跑满的话所有<code>/home</code>下的操作都会变慢。</li>
+<li>有需要用<code>sudo</code>安装的包软件，直接提意见。</li>
+</ol>
+<h2 id="管理者"><a href="#管理者" class="headerlink" title="管理者"></a><strong>管理者</strong></h2><p><strong>新建用户</strong></p>
+<p>因为没有NIS服务，所以创建新用户的时候需要在三个节点上都创建用户，具体操作</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo adduser foo        <span class="comment"># 在三个主机上都新建同样的用户并查看UID和GID是否一致</span></span><br><span class="line">sudo <span class="built_in">mkdir</span> /data/foo    <span class="comment"># 新建一个属于该用户存储数据的目录</span></span><br><span class="line"><span class="built_in">chown</span> foo /data/foo     <span class="comment"># 修改权限</span></span><br><span class="line"><span class="built_in">chgrp</span> foo /data/foo     <span class="comment"># 修改权限</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>删除用户</strong></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo deluser foo</span><br><span class="line">sudo <span class="built_in">rm</span> -rf /data/foo</span><br></pre></td></tr></table></figure>
+
+<p>需要注意的是<code>useradd</code>和<code>adduser</code>并不一样，<code>userdel</code>和<code>deluser</code>并不一样。</p>
+<h1 id="搭建计算集群"><a href="#搭建计算集群" class="headerlink" title="搭建计算集群"></a><strong>搭建计算集群</strong></h1><p>搭建小组成员：刘晋弋，申嵩聿，王正一，韩嘉康，李竹海，贾涵筇，胡老师<br>服务器放置地点：科技楼A229小黑屋</p>
+<p>三台服务器是一模一样的机型和配置，每个服务器有58个核，1T的固态硬盘和4T的机械硬盘，非常适合搭建计算集群。</p>
+<div style="text-align:center">
+<img src="/2021/07/19/%E7%AE%80%E5%8D%95%E8%AE%A1%E7%AE%97%E9%9B%86%E7%BE%A4%E7%9A%84%E6%90%AD%E5%BB%BA/server.jpg" class="" width="500" alt="科技楼小黑屋里的服务器排列">
+</div>
+
+<h2 id="TODO"><a href="#TODO" class="headerlink" title="TODO"></a>TODO</h2><ul>
+<li>在这里<code>/etc/update-motd.d</code>更改欢迎语</li>
+<li>调整风扇转速，风扇转速上限解锁</li>
+<li>免VPN校外登录</li>
+<li>听说有一个只能在自己目录下面<code>sudo</code>的东西</li>
+</ul>
+<h2 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a><strong>准备工作</strong></h2><p><strong>硬件准备</strong></p>
+<p>插线板<br>千兆交换机<br>显示器<br>键盘<br>五类网线四根<br>Ubuntu Desktop 18.04 LTS启动盘</p>
+<p><strong>系统重装</strong></p>
+<p>使用Ubuntu Desktop 18.04 LTS启动U盘重装系统。如果存在硬盘清理不干净的情况，可以使用Security Erase来清理所有固态和机械（耗时较长），再进行安装系统的过程。三台服务器健康状况良好。</p>
+<h2 id="网络配置"><a href="#网络配置" class="headerlink" title="网络配置"></a><strong>网络配置</strong></h2><p>服务器之间使用千兆交换机连接（最大传输速度为125 Mb&#x2F;s），所有服务器在校园网内随意连接。</p>
+<table>
+<thead>
+<tr>
+<th align="left">Hostname</th>
+<th align="left">IP</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">novamaria</td>
+<td align="left">xx.xx.xx.133</td>
+</tr>
+<tr>
+<td align="left">vivy</td>
+<td align="left">xx.xx.xx.60</td>
+</tr>
+<tr>
+<td align="left">diva</td>
+<td align="left">xx.xx.xx.201</td>
+</tr>
+</tbody></table>
+<p>需要注意的是，尽量使用独立网卡，使用<code>ifconfig</code>可以查看有几个网卡，独立网卡名称开头是enp，集成网卡名称开头是eno。</p>
+<p>服务器最好使用静态IP（Static IP）而不是动态IP（DHCP），但是因为在校园网内部IP和网卡MAC是绑定的，IP够用的情况下不会出现IP被占用的情况，所以这里不进行设置，如果因为机器重启导致IP发生变化，直接修改机器配置即可。</p>
+<h2 id="软件安装"><a href="#软件安装" class="headerlink" title="软件安装"></a><strong>软件安装</strong></h2><p>下面是一些之后需要用到的软件，先提前安装好</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ sudo apt-get update</span><br><span class="line">$ sudo apt-get install</span><br><span class="line">openssh-client openssh-server \</span><br><span class="line">vsftpd \</span><br><span class="line">net-tools xfsprogs lvm2 \</span><br><span class="line">nfs-server nfs-client rpcbind glusterfs-server glusterfs-client \</span><br><span class="line">git \</span><br><span class="line">vim neovim python-neovim python3-neovim python3-pip \</span><br><span class="line">gfortran build-essential golang nodejs php \</span><br><span class="line">cmake automake pkg-config autoconf libtool \</span><br><span class="line">lsscsi inxi \</span><br><span class="line">curl zsh tmux ranger tree htop screen \</span><br><span class="line">msttcorefonts \</span><br><span class="line">libncurses5-dev libssl-dev zlib1g-dev \</span><br></pre></td></tr></table></figure>
+
+
+<h2 id="SSH"><a href="#SSH" class="headerlink" title="SSH"></a><strong>SSH</strong></h2><p>这一步使得三台服务器之间能够通过主机名直接访问，在<code>/etc/hosts</code>中添加</p>
+<figure class="highlight plaintext"><figcaption><span>/etc/hosts</span></figcaption><table><tr><td class="code"><pre><span class="line"># IP                    Hostname</span><br><span class="line">xx.xx.xx.133    	novamaria</span><br><span class="line">xx.xx.xx.60        	vivy</span><br><span class="line">xx.xx.xx.201       	diva</span><br></pre></td></tr></table></figure>
+
+<p>之后我们将novamaria称为主节点，作为各项服务的服务端，其它两个主机作客户端。如果需要进一步配置免密访问，可以先用<code>ssh-keygen</code>生成密钥和公钥，然后再<code>ssh-copy-id</code>将公钥复制到另外两台服务器上。</p>
+<h2 id="NFS"><a href="#NFS" class="headerlink" title="NFS"></a><strong>NFS</strong></h2><p>网络文件系统（Network File System）是用来在不同主机之间共享文件的，参考了<a target="_blank" rel="noopener" href="https://www.digitalocean.com/community/tutorials/how-to-set-up-an-nfs-mount-on-ubuntu-18-04">How To Set Up an NFS Mount on Ubuntu 18.04</a>和 <a target="_blank" rel="noopener" href="https://blog.csdn.net/liuck/article/details/60955507">Linux下配置NIS和NFS &#x2F;home目录</a>。</p>
+<p>这里主要说明如何实现<code>/home</code>文件夹的NFS部署过程。后续可以在vivy上部署<code>/opt</code>文件夹用来共享一些比如OneAPI之类的计算包，也可以在diva上部署<code>/share</code>文件夹用来存放公共资源，更好地利用三个服务器的固态。</p>
+<h3 id="NFS服务端"><a href="#NFS服务端" class="headerlink" title="NFS服务端"></a><strong>NFS服务端</strong></h3><p>在novamaria上编辑<code>/etc/exports</code>文件，添加下面两行</p>
+<figure class="highlight plaintext"><figcaption><span>/etc/exports</span></figcaption><table><tr><td class="code"><pre><span class="line">/home   xx.xx.xx.60/24(insecure,rw,sync,no_root_squash,no_subtree_check)</span><br><span class="line">/home   xx.xx.xx.201/24(insecure,rw,sync,no_root_squash,no_subtree_check)</span><br></pre></td></tr></table></figure>
+
+<p>然后<code>sudo exportfs -a</code>，重启NFS服务</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">sudo service nfs-kernel-server restart</span><br></pre></td></tr></table></figure>
+
+<h3 id="NFS客户端"><a href="#NFS客户端" class="headerlink" title="NFS客户端"></a><strong>NFS客户端</strong></h3><p>先将原来的<code>/home</code>进行备份（放置后续操作失误），在vivy和diva上编辑<code>/etc/fstab</code>文件，添加下面一行就可以重启进行挂载</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">novamaria:/home	/home	nfs	noatime,noauto,x-systemd.automount,x-systemd.device-timeout=10s 0	2</span><br></pre></td></tr></table></figure>
+
+<p>最后需要重启服务端和客户端。</p>
+<h2 id="GlusterFS"><a href="#GlusterFS" class="headerlink" title="GlusterFS"></a><strong>GlusterFS</strong></h2><p>GlusterFS是分布式文件存储系统。首先将每个计算节点上的四块机械硬盘整合到一个逻辑卷中（<a target="_blank" rel="noopener" href="https://linux.cn/article-12670-1.html">如何在Linux中创建&#x2F;配置LVM</a>），可以通过<code>lsblk</code>查看未挂载的机械硬盘的设备名，确认需要纳入逻辑卷中的设备名</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo pvcreate /dev/sda /dev/sdb /dev/sdc /dev/sdd       <span class="comment"># create physical volumn</span></span><br><span class="line">sudo pvs                                                <span class="comment"># display physical volumn</span></span><br><span class="line">sudo vgcreate vg /dev/sda /dev/sdb /dev/sdc /dev/sdd	<span class="comment"># create volumn group</span></span><br><span class="line">sudo vgs vg                                             <span class="comment"># display volumn gruop</span></span><br><span class="line">sudo lvcreate -n lva -l 100%FREE vg                     <span class="comment"># create logical volumn</span></span><br><span class="line">sudo lvs /dev/vg/lva                                    <span class="comment"># display logical volumn</span></span><br><span class="line">sudo mkfs -t xfs /dev/vg/lva                            <span class="comment"># 格式化逻辑卷</span></span><br><span class="line">sudo <span class="built_in">mkdir</span> -p /glusterfs                                <span class="comment"># 创建要挂载的目录</span></span><br><span class="line">sudo mount /dev/vg/lva /glusterfs                       <span class="comment"># 挂载</span></span><br></pre></td></tr></table></figure>
+
+<p>然后在<code>/etc/fstab</code>里添加</p>
+<figure class="highlight plaintext"><figcaption><span>/etc/fstab</span></figcaption><table><tr><td class="code"><pre><span class="line">/dev/vg/lva     /glusterfs     xfs     defaults        0       0</span><br></pre></td></tr></table></figure>
+
+<p>当每个计算节点上4块机械都整合到一个逻辑卷中之后，进行GlusterFS的搭建（<a target="_blank" rel="noopener" href="https://www.linuxidc.com/Linux/2018-08/153727.htm">如何在Ubuntu 18.04上使用GlusterFS设置高可用性存储</a>），首先在每个节点上启动并查看GlusterFS的状态</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo systemctl start glusterd</span><br><span class="line">sudo systemctl <span class="built_in">enable</span> glusterd</span><br><span class="line">sudo systemctl status glusterd</span><br></pre></td></tr></table></figure>
+
+<p>在主节点novamaria上配置信任池</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo gluster peer probe vivy</span><br><span class="line">sudo gluster peer probe diva</span><br><span class="line">sudo gluster peer status</span><br></pre></td></tr></table></figure>
+
+<p>此时信任池是空的，创建完之后可以在vivy或者diva上查看信任池状态。在novamaria上创建卷</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo gluster volume create gfsv transport tcp &#123;novamaria,vivy,diva&#125;:/glusterfs/brick</span><br></pre></td></tr></table></figure>
+
+<p>gfsv是GFS Volume的缩写，这里需要注意我们不需要进行备份，在创建卷的时候没必要加上replica这个参数。查看卷的信息，启动卷</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo gluster volume info</span><br><span class="line">sudo gluster volume start gfsv</span><br></pre></td></tr></table></figure>
+
+
+<div style="text-align:center">
+<img src="/2021/07/19/%E7%AE%80%E5%8D%95%E8%AE%A1%E7%AE%97%E9%9B%86%E7%BE%A4%E7%9A%84%E6%90%AD%E5%BB%BA/gfsv_info.png" class="" width="350" alt="卷的信息是这样的">
+</div>
+
+<p>然后在主节点novamaria进行挂载，机械硬盘主要用于存储数据所以命名为<code>/data</code></p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">sudo <span class="built_in">mkdir</span> /data</span><br><span class="line">sudo mount -t glusterfs novamaria:/gfsv /data</span><br></pre></td></tr></table></figure>
+
+<p>在diva和vivy中的<code>/etc/fstab</code>文件里添加下面这一行（NFS）</p>
+<figure class="highlight plaintext"><figcaption><span>/etc/fstab</span></figcaption><table><tr><td class="code"><pre><span class="line">novamaria:/gfsv   /data     glusterfs    defaults,_netdev   0       0</span><br></pre></td></tr></table></figure>
+
+<p>可以使用<code>df -h</code>查看GlusterFS在novamaria上的挂载情况。</p>
+<p><code>/data</code> 平均读出速度达到220M&#x2F;s，平均写入速度达到100M&#x2F;s，对比之下非分布式的系统（也就是在同一个主机内进行读写操作）可以达到的读写速度分别是330M&#x2F;s和180M&#x2F;s，而远程文件系统（通过网线进行传输）受限于网卡、交换机的带宽，仅能达到读写速度110M&#x2F;s和50M&#x2F;s，GlusterFS总体而言是它们的平均值，也可以看到分布式存储的特点。</p>
+<h2 id="失败的NIS"><a href="#失败的NIS" class="headerlink" title="失败的NIS"></a><strong>失败的NIS</strong></h2><p>网络信息服务（Network Infomation Service）提供共享用户信息，一个用户在Server上可以登录，那么在Client上也能登录，共享了用户、群组的信息。配置分为Server端和Client端。参考这些资源</p>
+<p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=02JMK6cCnI4">NIS Installation and Configuration</a><br><a target="_blank" rel="noopener" href="https://boubakr92.wordpress.com/2013/12/14/automounting-home-directories-with-nis-and-nfs/">[How-To] Automounting Home Directories with NIS and NFS</a><br><a target="_blank" rel="noopener" href="https://linuxhint.com/install_nis_server_ubuntu/">nstalling NIS server on Ubuntu 18.04 LTS</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38663663/article/details/107206322">总结下最近建立集群的步骤以及NIS服务器搭建</a></p>
+<p>因为有严重的BUG没有解决，做完NIS之后Client端登录会明显变慢，最终并未做成 NIS 服务！</p>
+<br/>
+
+<div style="text-align:center">
+<img src="/2021/07/19/%E7%AE%80%E5%8D%95%E8%AE%A1%E7%AE%97%E9%9B%86%E7%BE%A4%E7%9A%84%E6%90%AD%E5%BB%BA/Vivy.jpg" class="" width="300" alt="Vivy和Diva的命名来自2021年四月番《Vivy: Fluorite Eyes Song》">
+</div>
+
+<br/>
+</div><div class="article-licensing box"><div class="licensing-title"><p>简单计算集群的搭建</p><p><a href="https://jinyiliu.github.io/2021/07/19/简单计算集群的搭建/">https://jinyiliu.github.io/2021/07/19/简单计算集群的搭建/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>Jinyi</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2021-07-19</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2023-04-07</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/Linux/">Linux</a><a class="link-muted mr-2" rel="tag" href="/tags/bnu/">bnu</a></div><!--!--></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">Like this article? Support the author with</h3><div class="buttons is-centered"><a class="button donate" href="https://www.buymeacoffee.com/jinyiliu" target="_blank" rel="noopener" data-type="buymeacoffee"><span class="icon is-small"><i class="fas fa-coffee"></i></span><span>Buy me a coffee</span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2021/10/07/ICARUS%E5%8D%9A%E5%AE%A2%E5%86%99%E4%BD%9C%E5%A4%87%E5%BF%98%E5%BD%95/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">ICARUS博客写作备忘录</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2021/07/01/macOS%E7%BC%96%E7%A8%8B%E7%9A%84%E7%9B%B8%E5%85%B3%E8%AE%BE%E7%BD%AE/"><span class="level-item">macOS编程的硬件设置</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.jpg" alt="刘晋弋"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">刘晋弋</p><p class="is-size-6 is-block">Master in Astrophysics</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Leiden, Nederland</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">23</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">0</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">13</p></a></div></div></nav><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/jinyiliu"><i class="fab fa-github"></i></a></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/AST9240/"><span class="tag">AST9240</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/CMB/"><span class="tag">CMB</span><span class="tag">7</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Life/"><span class="tag">Life</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Linux/"><span class="tag">Linux</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Physics/"><span class="tag">Physics</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/RadioAstro/"><span class="tag">RadioAstro</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/SIW2022/"><span class="tag">SIW2022</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/WeakLensing/"><span class="tag">WeakLensing</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/blog/"><span class="tag">blog</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/bnu/"><span class="tag">bnu</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/mac/"><span class="tag">mac</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/math/"><span class="tag">math</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/vim/"><span class="tag">vim</span><span class="tag">1</span></a></div></div></div></div></div><div class="column-right-shadow is-hidden-widescreen is-sticky"></div></div><div class="column column-right is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only order-3 is-sticky"><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">Catalogue</h3><ul class="menu-list"><li><a class="level is-mobile" href="#使用计算集群"><span class="level-left"><span class="level-item">1</span><span class="level-item">使用计算集群</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#普通用户"><span class="level-left"><span class="level-item">1.1</span><span class="level-item">普通用户</span></span></a></li><li><a class="level is-mobile" href="#管理者"><span class="level-left"><span class="level-item">1.2</span><span class="level-item">管理者</span></span></a></li></ul></li><li><a class="level is-mobile" href="#搭建计算集群"><span class="level-left"><span class="level-item">2</span><span class="level-item">搭建计算集群</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#TODO"><span class="level-left"><span class="level-item">2.1</span><span class="level-item">TODO</span></span></a></li><li><a class="level is-mobile" href="#准备工作"><span class="level-left"><span class="level-item">2.2</span><span class="level-item">准备工作</span></span></a></li><li><a class="level is-mobile" href="#网络配置"><span class="level-left"><span class="level-item">2.3</span><span class="level-item">网络配置</span></span></a></li><li><a class="level is-mobile" href="#软件安装"><span class="level-left"><span class="level-item">2.4</span><span class="level-item">软件安装</span></span></a></li><li><a class="level is-mobile" href="#SSH"><span class="level-left"><span class="level-item">2.5</span><span class="level-item">SSH</span></span></a></li><li><a class="level is-mobile" href="#NFS"><span class="level-left"><span class="level-item">2.6</span><span class="level-item">NFS</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#NFS服务端"><span class="level-left"><span class="level-item">2.6.1</span><span class="level-item">NFS服务端</span></span></a></li><li><a class="level is-mobile" href="#NFS客户端"><span class="level-left"><span class="level-item">2.6.2</span><span class="level-item">NFS客户端</span></span></a></li></ul></li><li><a class="level is-mobile" href="#GlusterFS"><span class="level-left"><span class="level-item">2.7</span><span class="level-item">GlusterFS</span></span></a></li><li><a class="level is-mobile" href="#失败的NIS"><span class="level-left"><span class="level-item">2.8</span><span class="level-item">失败的NIS</span></span></a></li></ul></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/favicon.ico" alt="Jinyi Blog" height="28"></a><p class="is-size-7"><span>&copy; 2023 Jinyi</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "This website uses cookies to improve your experience.",
+          dismiss: "Got it!",
+          allow: "Allow cookies",
+          deny: "Decline",
+          link: "Learn more",
+          policy: "Cookie Policy",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js" defer></script><script>window.addEventListener("load", function() {
+            document.querySelectorAll('[role="article"] > .content').forEach(function(element) {
+                renderMathInElement(element);
+            });
+        });</script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
+        });</script></body></html>

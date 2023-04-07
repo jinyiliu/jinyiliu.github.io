@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>Sampling Methods - Jinyi Blog</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="Jinyi Blog"><meta name="msapplication-TileImage" content="/img/favicon.ico"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="Jinyi Blog"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="MCMC Interactive Gallary"><meta property="og:type" content="blog"><meta property="og:title" content="Sampling Methods"><meta property="og:url" content="https://jinyiliu.github.io/2021/11/08/Sampling-Methods/"><meta property="og:site_name" content="Jinyi Blog"><meta property="og:description" content="MCMC Interactive Gallary"><meta property="og:locale" content="en_US"><meta property="og:image" content="https://jinyiliu.github.io/img/og_image.png"><meta property="article:published_time" content="2021-11-08T11:57:16.000Z"><meta property="article:modified_time" content="2023-04-07T11:48:27.543Z"><meta property="article:author" content="Jinyi"><meta property="article:tag" content="AST9240"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://jinyiliu.github.io/img/og_image.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://jinyiliu.github.io/2021/11/08/Sampling-Methods/"},"headline":"Sampling Methods","image":["https://jinyiliu.github.io/img/og_image.png"],"datePublished":"2021-11-08T11:57:16.000Z","dateModified":"2023-04-07T11:48:27.543Z","author":{"@type":"Person","name":"Jinyi"},"publisher":{"@type":"Organization","name":"Jinyi Blog","logo":{"@type":"ImageObject","url":"https://jinyiliu.github.io/img/favicon.ico"}},"description":"MCMC Interactive Gallary"}</script><link rel="canonical" href="https://jinyiliu.github.io/2021/11/08/Sampling-Methods/"><link rel="icon" href="/img/favicon.ico"><link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/highlight.js@9.12.0/styles/atom-one-light.css"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link rel="stylesheet" href="/css/default.css"><style>body>.footer,body>.navbar,body>.section{opacity:0}</style><!--!--><!--!--><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdn.jsdelivr.net/npm/pace-js@1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/favicon.ico" alt="Jinyi Blog" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">Home</a><a class="navbar-item" href="/archives">Archives</a><a class="navbar-item" href="/categories">Categories</a><a class="navbar-item" href="/tags">Tags</a><a class="navbar-item" href="/about">About</a></div><div class="navbar-end"><a class="navbar-item is-hidden-tablet catalogue" title="Catalogue" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="Search" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-6-widescreen"><div class="card"><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item">Posted&nbsp;<time dateTime="2021-11-08T11:57:16.000Z" title="11/8/2021, 12:57:16 PM">2021-11-08</time></span><span class="level-item">Updated&nbsp;<time dateTime="2023-04-07T11:48:27.543Z" title="4/7/2023, 1:48:27 PM">2023-04-07</time></span></div></div><h1 class="title is-3 is-size-4-mobile">Sampling Methods</h1><div class="content"><p><a target="_blank" rel="noopener" href="https://chi-feng.github.io/mcmc-demo/app.html">MCMC Interactive Gallary</a></p>
+<span id="more"></span>
+
+<h1 id="Gaussian-Sampling"><a href="#Gaussian-Sampling" class="headerlink" title="Gaussian Sampling"></a><strong>Gaussian Sampling</strong></h1><p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=TH-X5aVG0Ic&list=PL0b6j-KLIuQMC1z2JjJYDdypUECWfIkH2&index=11">AST9240 - Gaussian Sampling</a></p>
+<h2 id="Multidimensional-Gaussian"><a href="#Multidimensional-Gaussian" class="headerlink" title="Multidimensional Gaussian"></a><strong>Multidimensional Gaussian</strong></h2><p>\[ \bm{x}\sim\mathcal{N}(\bm{\mu}, C) \]</p>
+<p>where \(C\) is covariance matrix</p>
+<p>\[ C&#x3D;\langle \bm{x}\bm{x}^T\rangle - \langle\bm{x}\rangle\langle\bm{x}\rangle^T \]</p>
+<p>The log-likelihood is</p>
+<p>\[ \ln\mathcal{L}(\bm{x}|\bm{\mu})&#x3D;\mathrm{const.} - \frac{1}{2}(\bm{x}-\bm{\mu})^TC^{-1}(\bm{x}-\bm{\mu}) \]</p>
+<p>The sample of \(\bm\mu\) is</p>
+<p>\[\bm{\mu}&#x3D;\bm{x}+C^{1&#x2F;2}\bm{\eta} \]</p>
+<p>\(C^{1&#x2F;2}\bm{\eta}\) is <strong>flunctuation term</strong>, and \(C^{1&#x2F;2}\) satisfies</p>
+<p>\[C^{1&#x2F;2}(C^{1&#x2F;2})^T&#x3D;C\]</p>
+<h2 id="d-x3D-As-n"><a href="#d-x3D-As-n" class="headerlink" title="d &#x3D; As+n"></a><strong>d &#x3D; As+n</strong></h2><p>Often we have</p>
+<p>\[\color{red}\bm{d}&#x3D;A\bm{s}+\bm{n}\]</p>
+<p>and covariance matrix of noise \(\bm n\)</p>
+<p>\[ \langle\bm{n}\bm{n}^T\rangle &#x3D; N \]</p>
+<p>Here \(A\) can be pointing matrix, mixing matrix, etc in different contexts. The log-likelihood is</p>
+<p>\[\ln P(\bm{d}|\bm{s}) &#x3D; \mathrm{const.} - \frac{1}{2}(\bm{d}-A\bm{s})^TN^{-1}(\bm{d}-A\bm{s})\]</p>
+<p>Take derivative of the likelihood and make it equal to zero</p>
+<p>\[ \begin{aligned} \frac{\mathrm{d}\ln\mathcal{L}(\bm{d}|\bm{s})}{\mathrm{d}\bm{s}}&amp;\propto-\frac{\mathrm{d}}{\mathrm{d}\bm{s}}(\bm{d}-A\bm{s})^TN^{-1}(\bm{d}-A\bm{s}) \\ &amp;&#x3D;A^TN^{-1}(\bm{d}-A\bm{s})+(\bm{d}-A\bm{s})^TN^{-1}A&#x3D;0 \end{aligned} \]</p>
+<p>The two terms \(A^TN^{-1}(\bm{d}-A\bm{s})\) and \((\bm{d}-A\bm{s})^TN^{-1}A\) are equivalent, and we get the maximum likelihood solution</p>
+<p>\[ \bm{s}&#x3D;(A^TN^{-1}A)^{-1}A^TN^{-1}\bm{d} \]</p>
+<p>上面的求逆从数值上是非常困难的，所以我们经常写成下面这种形式</p>
+<p>\[\color{red} (A^TN^{-1}A)\bm{s}&#x3D;A^TN^{-1}\bm{d} \]</p>
+<p>这就是 \(A\bm{x}&#x3D;\bm{b}\) 的形式，可以用 Conjugate Gradient 的方法来求解（可以看<a target="_blank" rel="noopener" href="https://www.cs.cmu.edu/~quake-papers/painless-conjugate-gradient.pdf">Painless conjugate gradient</a>快速掌握 CG 算法）。到此为止，我们还差一个 <strong>flunctuation term</strong>，需要求 \(\bm{s}\) 的协方差矩阵</p>
+<p>\[ \langle\bm{s}\bm{s}\rangle - \langle\bm{s}\rangle\langle\bm{s}\rangle^T &#x3D;(A^TN^{-1}A)^{-1} \]</p>
+<p>实际上，上面这个操作把 \(\bm{n}\) 的协方差矩阵转换到 \(\bm{s}\) 的空间下。如果 \(\bm{d}\) 是 TOD 数据，\(\bm{s}\) 是一张天图，\(A\) 是 mapmaking 的操作，那么这就是把协方差矩阵从时间带到像素空间中，相当于误差传递的过程。</p>
+<p>The sample is</p>
+<p>\[ \bm{s}&#x3D;(A^TN^{-1}A)^{-1}A^TN^{-1}\bm{d}+A^TN^{1&#x2F;2}\bm{\eta} \]</p>
+<h2 id="With-a-prior-on-s"><a href="#With-a-prior-on-s" class="headerlink" title="With a prior on s"></a><strong>With a prior on s</strong></h2><p>If the prior is gaussian, then</p>
+<p>\[\ln P(\bm{d}|\bm{s}) &#x3D; \mathrm{const.} - \frac{1}{2}(\bm{d}-A\bm{s})^TN^{-1}(\bm{d}-A\bm{s}) - \frac{1}{2}(\bm{s}-\bm{\mu}_s)^TS^{-1}(\bm{s}-\bm{\mu}_s)\]</p>
+<p>The sample becomes</p>
+<p>\[ (A^TN^{-1}A+S^{-1})\bm{s}&#x3D;A^TN^{-1}\bm{d}+S^{-1}\bm{\mu}_s+A^TN^{1&#x2F;2}\bm{\eta}_1+S^{1&#x2F;2}\bm{\eta}_2 \]</p>
+<p>The covariance matrix of \(\bm{s}\) is</p>
+<p>\[ \langle\bm{s}\bm{s}\rangle - \langle\bm{s}\rangle\langle\bm{s}\rangle^T &#x3D;(A^TN^{-1}A+S^{-1})^{-1} \]</p>
+<p>在前景分析中，各种前景成分的 amplitude 可以采用 Gaussian sampling 的方法，因为 amplitude 和数据的关系是线性的，如果噪声是高斯的，那么前景的 amplitude 也是高斯的。</p>
+<h1 id="Inversion-sampling"><a href="#Inversion-sampling" class="headerlink" title="Inversion sampling"></a><strong>Inversion sampling</strong></h1><p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=X9zbSujqnh4&list=PL0b6j-KLIuQMC1z2JjJYDdypUECWfIkH2&index=12">AST9240 - Inversion Sampling</a></p>
+<p>在前景分析中，谱指数可以用 Inversion sampling 的方法，Inversion sampling 可以应用到任何概率分布上。</p>
+<h1 id="Metropolis-sampling"><a href="#Metropolis-sampling" class="headerlink" title="Metropolis sampling"></a><strong>Metropolis sampling</strong></h1><p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=50nu5_qzedM&list=PL0b6j-KLIuQMC1z2JjJYDdypUECWfIkH2&index=2">AST9240 - Monte Carlo sampling methods</a></p>
+<h2 id="Metropolis-Hastings-sampling"><a href="#Metropolis-Hastings-sampling" class="headerlink" title="Metropolis-Hastings sampling"></a><strong>Metropolis-Hastings sampling</strong></h2><p>Allows for asymmetric transition rules.</p>
+<h1 id="Gibbs-sampling"><a href="#Gibbs-sampling" class="headerlink" title="Gibbs sampling"></a><strong>Gibbs sampling</strong></h1><p>Basis of Commander3. See Gibbs Sampling in MCMC Interactive Gallary.</p>
+<p>我们本来需要计算 \( P(h, g, s_\mathrm{cmb}, b|\bm{d}) \)，采用 Gibbs 采样方法，我们只需要去计算</p>
+<p>\[\begin{aligned} &amp;P(h|\bm{d},g,s_\mathrm{cmb},b) \\ &amp;P(g|\bm{d}, h, s_\mathrm{cmb}, b) \\ &amp;P(s_\mathrm{cmb}|\bm{d}, h, g, b) \\ &amp;P(b|\bm{d}, h, g, s_\mathrm{cmb}) \end{aligned}\]</p>
+<p>而这些都是非常好计算的，甚至有一些有解析的形式。</p>
+<p><a href="https://jinyiliu.github.io/html/Jinyi_gibbs_sampler.html">Jinyi_gibbs_sampler</a></p>
+</br>
+</div><div class="article-licensing box"><div class="licensing-title"><p>Sampling Methods</p><p><a href="https://jinyiliu.github.io/2021/11/08/Sampling-Methods/">https://jinyiliu.github.io/2021/11/08/Sampling-Methods/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>Author</h6><p>Jinyi</p></div></div><div class="level-item is-narrow"><div><h6>Posted on</h6><p>2021-11-08</p></div></div><div class="level-item is-narrow"><div><h6>Updated on</h6><p>2023-04-07</p></div></div><div class="level-item is-narrow"><div><h6>Licensed under</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><div class="article-tags is-size-7 mb-4"><span class="mr-2">#</span><a class="link-muted mr-2" rel="tag" href="/tags/AST9240/">AST9240</a></div><!--!--></article></div><div class="card"><div class="card-content"><h3 class="menu-label has-text-centered">Like this article? Support the author with</h3><div class="buttons is-centered"><a class="button donate" href="https://www.buymeacoffee.com/jinyiliu" target="_blank" rel="noopener" data-type="buymeacoffee"><span class="icon is-small"><i class="fas fa-coffee"></i></span><span>Buy me a coffee</span></a></div></div></div><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2021/11/11/%E5%A6%82%E4%BD%95%E8%BF%9B%E8%A1%8C%E6%96%87%E7%8C%AE%E7%AE%A1%E7%90%86%EF%BC%9F/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">如何进行文献管理？</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2021/10/19/Foregrounds-in-CMB-physics/"><span class="level-item">Foregrounds in CMB physics</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.jpg" alt="刘晋弋"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">刘晋弋</p><p class="is-size-6 is-block">Master in Astrophysics</p><p class="is-size-6 is-flex justify-content-center"><i class="fas fa-map-marker-alt mr-1"></i><span>Leiden, Nederland</span></p></div></div></nav><nav class="level is-mobile"><div class="level-item has-text-centered is-marginless"><div><p class="heading">Posts</p><a href="/archives"><p class="title">23</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Categories</p><a href="/categories"><p class="title">0</p></a></div></div><div class="level-item has-text-centered is-marginless"><div><p class="heading">Tags</p><a href="/tags"><p class="title">13</p></a></div></div></nav><div class="level is-mobile is-multiline"><a class="level-item button is-transparent is-marginless" target="_blank" rel="noopener" title="Github" href="https://github.com/jinyiliu"><i class="fab fa-github"></i></a></div></div></div><div class="card widget" data-type="tags"><div class="card-content"><div class="menu"><h3 class="menu-label">Tags</h3><div class="field is-grouped is-grouped-multiline"><div class="control"><a class="tags has-addons" href="/tags/AST9240/"><span class="tag">AST9240</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/CMB/"><span class="tag">CMB</span><span class="tag">7</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Life/"><span class="tag">Life</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Linux/"><span class="tag">Linux</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/Physics/"><span class="tag">Physics</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/RadioAstro/"><span class="tag">RadioAstro</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/SIW2022/"><span class="tag">SIW2022</span><span class="tag">4</span></a></div><div class="control"><a class="tags has-addons" href="/tags/WeakLensing/"><span class="tag">WeakLensing</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/blog/"><span class="tag">blog</span><span class="tag">2</span></a></div><div class="control"><a class="tags has-addons" href="/tags/bnu/"><span class="tag">bnu</span><span class="tag">1</span></a></div><div class="control"><a class="tags has-addons" href="/tags/mac/"><span class="tag">mac</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/math/"><span class="tag">math</span><span class="tag">3</span></a></div><div class="control"><a class="tags has-addons" href="/tags/vim/"><span class="tag">vim</span><span class="tag">1</span></a></div></div></div></div></div><div class="column-right-shadow is-hidden-widescreen is-sticky"></div></div><div class="column column-right is-4-tablet is-4-desktop is-3-widescreen is-hidden-touch is-hidden-desktop-only order-3 is-sticky"><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">Catalogue</h3><ul class="menu-list"><li><a class="level is-mobile" href="#Gaussian-Sampling"><span class="level-left"><span class="level-item">1</span><span class="level-item">Gaussian Sampling</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Multidimensional-Gaussian"><span class="level-left"><span class="level-item">1.1</span><span class="level-item">Multidimensional Gaussian</span></span></a></li><li><a class="level is-mobile" href="#d-x3D-As-n"><span class="level-left"><span class="level-item">1.2</span><span class="level-item">d = As+n</span></span></a></li><li><a class="level is-mobile" href="#With-a-prior-on-s"><span class="level-left"><span class="level-item">1.3</span><span class="level-item">With a prior on s</span></span></a></li></ul></li><li><a class="level is-mobile" href="#Inversion-sampling"><span class="level-left"><span class="level-item">2</span><span class="level-item">Inversion sampling</span></span></a></li><li><a class="level is-mobile" href="#Metropolis-sampling"><span class="level-left"><span class="level-item">3</span><span class="level-item">Metropolis sampling</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#Metropolis-Hastings-sampling"><span class="level-left"><span class="level-item">3.1</span><span class="level-item">Metropolis-Hastings sampling</span></span></a></li></ul></li><li><a class="level is-mobile" href="#Gibbs-sampling"><span class="level-left"><span class="level-item">4</span><span class="level-item">Gibbs sampling</span></span></a></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div></div></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/favicon.ico" alt="Jinyi Blog" height="28"></a><p class="is-size-7"><span>&copy; 2023 Jinyi</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p></div></div></div></div></footer><script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/moment@2.22.2/min/moment-with-locales.min.js"></script><script src="https://cdn.jsdelivr.net/npm/clipboard@2.0.4/dist/clipboard.min.js" defer></script><script>moment.locale("en");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script src="/js/column.js"></script><script src="/js/animation.js"></script><a id="back-to-top" title="Back to top" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><script src="https://cdn.jsdelivr.net/npm/cookieconsent@3.1.1/build/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "This website uses cookies to improve your experience.",
+          dismiss: "Got it!",
+          allow: "Allow cookies",
+          deny: "Decline",
+          link: "Learn more",
+          policy: "Cookie Policy",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdn.jsdelivr.net/npm/lightgallery@1.10.0/dist/js/lightgallery.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.css"><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/katex.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/auto-render.min.js" defer></script><script src="https://cdn.jsdelivr.net/npm/katex@0.15.1/dist/contrib/mhchem.min.js" defer></script><script>window.addEventListener("load", function() {
+            document.querySelectorAll('[role="article"] > .content').forEach(function(element) {
+                renderMathInElement(element);
+            });
+        });</script><!--!--><!--!--><!--!--><script src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="Type something..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script src="/js/insight.js" defer></script><script>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"Type something...","untitled":"(Untitled)","posts":"Posts","pages":"Pages","categories":"Categories","tags":"Tags"});
+        });</script></body></html>
