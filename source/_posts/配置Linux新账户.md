@@ -14,7 +14,7 @@ tags:
 
 {% codeblock lang:bash line_number:false %}
 ssh-keygen -t rsa            # 生成本地的密钥和公钥匙
-ssh-dopy-id foo@xx.xx.xx.xx  # 将本地的公钥拷贝到服务器上
+ssh-copy-id foo@xx.xx.xx.xx  # 将本地的公钥拷贝到服务器上
 {% endcodeblock %}
 
 <!--more-->
