@@ -70,7 +70,7 @@ def show_sph_harm(l, m):
 
 平天近似就是当天区足够小的时候，可以用傅立叶变换替代球谐变换
 
-\\[\sum_{\ell m}T_{\ell m}Y_\ell^m(\hat{\bm n}) \rightarrow \sum_{\bm{k}} T_\bm{k}e^{i\bm{k}\cdot\hat{\bm{n}}}\\]
+\\[\sum_{\ell m}T_{\ell m}Y_\ell^m(\hat{\bm n}) \rightarrow \sum_{\bm{k}} T_{\bm{k}} e^{i\bm{k}\cdot\hat{\bm{n}}}\\]
 
 在球谐变换中，不同 \\(\ell\\) 模式对应于不同尺度
 
