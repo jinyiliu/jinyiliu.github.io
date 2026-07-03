@@ -15,9 +15,8 @@ body{
   background:#f5f3ee;
   min-height:100vh;
   overflow:hidden;
-  transition:background .5s;
 }
-.wrap{display:flex;height:100vh;position:relative}
+.wrap{display:flex;height:100vh;position:relative;transition:background .5s}
 /* left sidebar */
 .sidebar{
   flex:0 0 440px;
@@ -152,7 +151,7 @@ function selectColor(idx){
   activeIdx=idx;
   const[name,hex]=entries[idx];
   const tc=setTextColor(hex);
-  document.body.style.background=hex;
+  document.querySelector('.wrap').style.background=hex;
   document.body.style.color=tc;
   colorName.textContent=name;
   colorName.style.color=tc;
