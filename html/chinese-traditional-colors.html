@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TCC</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+::-webkit-scrollbar{width:0}
+body{
+  font-family:"Noto Serif SC","Source Han Serif SC",serif;
+  background:#f5f3ee;
+  min-height:100vh;
+  overflow:hidden;
+  transition:background .5s;
+}
+.wrap{display:flex;height:100vh;position:relative}
+/* left sidebar */
+.sidebar{
+  flex:0 0 440px;
+  height:100vh;
+  overflow-y:auto;
+  padding:2rem 1.8rem;
+  background:rgba(255,255,255);
+  display:flex;
+  flex-wrap:wrap;
+  align-content:flex-start;
+  gap:5px 0;
+  color:#2c2c2c;
+}
+.sidebar-item{
+  flex:0 0 calc(100%/7);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:flex-start;
+  cursor:pointer;
+  padding:8px 4px;
+  position:relative;
+  gap:4px;
+  height:136px;
+}
+.sidebar-item.selected{outline:1.7px solid #231b2f}
+.sidebar-item.selected .name{opacity:1}
+.sidebar-item:hover .name{opacity:1}
+.sidebar-item .bar{
+  width:20px;
+  height:20px;
+  border-radius:50%;
+  flex-shrink:0;
+}
+.sidebar-item .name{
+  writing-mode:vertical-rl;
+  font-size:1.15rem;
+  letter-spacing:.06em;
+  line-height:1.3;
+  white-space:nowrap;
+  opacity:.85;
+  text-orientation:mixed;
+  color:#2c2c2c;
+  flex:1;
+}
+.sidebar-item:hover .name{opacity:1}
+/* right main area */
+.main{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  position:relative;
+  padding:3rem;
+}
+.main .color-name{
+  writing-mode:vertical-lr;
+  font-size:6rem;
+  font-weight:500;
+  letter-spacing:.3em;
+  line-height:1.1;
+  white-space:nowrap;
+  cursor:pointer;
+}
+.main .hex-display{
+  margin-top:2rem;
+  font-family:"SF Mono","Fira Code","Consolas",monospace;
+  font-size:1.4rem;
+  font-weight:500;
+  letter-spacing:.06em;
+  opacity:.5;
+  cursor:pointer;
+  transition:opacity .15s;
+}
+.main .hex-display:hover{opacity:1}
+.main .tcc-index{
+  position:absolute;
+  top:1.5rem;
+  right:1.5rem;
+  font-family:"SF Mono","Fira Code","Consolas",monospace;
+  font-size:1.2rem;
+  font-weight:500;
+  opacity:.4;
+  cursor:pointer;
+  letter-spacing:.06em;
+}
+@media(max-width:900px){
+  .sidebar{flex:0 0 380px;padding:1.2rem 1rem}
+  .sidebar-item{padding:6px 2px;gap:3px}
+  .main{padding:1.5rem}
+  .main .color-name{font-size:4rem}
+  .main .hex-display{font-size:1.2rem;margin-top:1rem}
+}
+@media(max-width:600px){
+  .sidebar{flex:0 0 320px;padding:.8rem .6rem}
+  .sidebar-item{padding:5px 2px;gap:2px}
+}
+@media(max-width:500px){
+  .sidebar{flex:0 0 100%;padding:.8rem .6rem}
+  .sidebar-item{padding:4px 2px;gap:1px}
+  .main{display:none}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="sidebar" id="sidebar"></div>
+  <div class="main" id="main">
+    <div class="tcc-index" id="tccIndex"></div>
+    <div class="color-name" id="colorName"></div>
+  <div class="hex-display" id="hexDisplay"></div>
+</div>
+</div>
+<script>
+const TCC={"杏花":"#fadce9","胭脂雪":"#f1deec","出炉银":"#edd2d3","退红":"#f0cfe3","靠红":"#f3c2d9","银红":"#e7cad3","粉红":"#efc4ce","水红":"#f4b3c2","肉红":"#e5b7b7","菡萏":"#ef92b5","杨妃":"#ee95a1","桃红":"#f091a1","梅红":"#da6d83","渥赭":"#c86d7f","绾色":"#b27777","唇脂":"#bf5362","美人祭":"#ba5b6a","娇红":"#d1254f","双红":"#c02a45","鞓红":"#b93948","胭脂":"#b32142","木红":"#a7435e","胭脂虫":"#992c42","玫瑰紫":"#8c2036","佛肯红":"#ebd0c2","海天霞":"#f8c7be","十样锦":"#f8c6b5","縓色":"#efab84","朱颜酡":"#ef856d","小红":"#e6755f","赪霞":"#de7565","彤云":"#cb5d55","茜红":"#cc5d4e","绯红":"#bf5552","朱草":"#a64336","绛红":"#b02e28","綪色":"#8f3430","烟红":"#902e22","枣红":"#8a2623","苏方":"#81474c","不老红":"#702029","福色":"#662b2f","霁红":"#6e2221","银朱":"#871f24","顺圣":"#7c191e","朱樱":"#77161b","朱红":"#711318","荔色":"#89262c","绛矾":"#762b28","代赭":"#63241f","繎红":"#5d181a","北紫":"#672125","木兰":"#48211f","麒麟褐":"#4c1e19","金红":"#ee781f","缙云":"#ee7755","抹红":"#de694c","凌霄":"#e97040","翘红":"#e9464d","骍衣":"#ea5532","黄丹":"#ea5514","朱膘":"#e94721","朱柿":"#dc541b","丹色":"#d64241","杏红":"#cf3d15","珊瑚":"#ca462f","曛黄":"#c3513f","橘红":"#bb5133","火赫":"#bf301e","鹤顶红":"#bc3823","红椒":"#e02623","石榴裙":"#c0182f","檎丹":"#d63329","丹罽":"#df0134","朱砂":"#d80835","丹枫":"#d81918","蕉红":"#c8191d","朱孔阳":"#b51f35","牙红":"#b01f24","樱花":"#e4b8d5","丁香":"#ce93b4","琅𤣳紫":"#d46a8f","胭脂水":"#c55a85","莲红":"#c1527f","红踯躅":"#c14379","魏红":"#b03766","魏紫":"#9d3956","紫矿":"#973248","萸紫":"#833c66","真紫":"#652a41","葡萄青":"#501d46","齐紫":"#49204e","紫茄":"#49214a","凝夜紫":"#32163c","轻紫":"#c5a4cc","楝花":"#c59ac5","茄花":"#bb97c5","槿花":"#ba83b7","雪青":"#a59aca","紫苑":"#757cbb","青莲":"#7b5aa3","紫罗兰":"#5f479a","三公子":"#4e3c75","绀蝶":"#33224f","油紫":"#231b2f","墨紫":"#281d2c","藕褐":"#dacccd","紫云":"#b8bdcc","黪紫":"#b2a8b6","雪灰":"#a7889d","豆沙":"#7e5862","藕荷":"#6f6a86","暮山紫":"#615f74","天缥":"#d4eceb","影青":"#cde4e2","粉青":"#c4dad6","蛋青":"#c3d9d6","天青":"#c6d7db","虾青":"#94a9b8","菘蓝":"#6c7a8f","育阳染":"#576470","青黛":"#43465f","火薰":"#2f3243","月白":"#d4e5ef","卵色天":"#c8d8e1","东方既白":"#afd7ec","碧落":"#aed0ed","窃蓝":"#88abda","挼蓝":"#6f9bc6","法蓝":"#30aecf","苍苍":"#4781c3","蔚蓝":"#2874af","四青":"#376ab3","三青":"#2f59a3","二青":"#1e50a2","胆矾":"#0045d8","空青":"#014a8f","洒蓝":"#1e3b7a","群青":"#0b328c","头青":"#0c3484","曾青":"#25367a","品蓝":"#003d74","花青":"#0e3265","青金石":"#2b2e77","佛头青":"#192e77","宝蓝":"#1f286f","璆琳":"#1f2a66","帝释青":"#192159","螺青":"#16304b","真青":"#192841","鸦青":"#12274f","霁蓝":"#101e4a","海青":"#080f40","西子":"#87c0ca","松石":"#75c1c4","天水碧":"#5aa4ae","法翠":"#00adb0","白青":"#4f93a6","翠蓝":"#41888a","品月":"#3c7699","柔蓝":"#006e8f","黄白游":"#feebc0","松花":"#ffee6f","黄檗":"#fef263","栀子":"#fdd876","黄栗留":"#fcde5f","缃叶":"#ecd452","柑黄":"#f4cf39","郁金裙":"#fed300","雌黄":"#eac21d","明黄":"#fcc800","嫩鹅黄":"#f2c867","炒米":"#e7b864","圆眼":"#f1be4d","荩草":"#f1bd3f","黄粱":"#e9bb41","黄栌":"#e3b73b","蜜蜡":"#e7b140","藤黄":"#e9ba20","番黄":"#f6ac19","桂黄":"#eda01f","中明":"#efa000","黄琉璃":"#e5a84b","雄黄":"#f3993a","后土":"#e1a34b","紫磨金":"#dda541","库金":"#db9c4b","娇黄":"#daa91f","银褐":"#d4ab37","鞠衣":"#d7a63b","大赤":"#d3a137","琥珀":"#d29836","金黄":"#d3a117","蒸栗":"#cc9111","杏黄":"#d98700","蛾黄":"#be8530","柘黄":"#c67915","椒房":"#d9935c","芸黄":"#d17254","檀香":"#bd7837","密陀僧":"#f7dca4","赤璋":"#e3c297","茧色":"#c6a268","泥金":"#c8a062","秋色":"#c0a670","老僧衣":"#9f8248","吉金":"#9f7a46","断肠":"#e8edb9","姚黄":"#ece87a","桑蕾":"#e3e27e","姜黄":"#e4c863","槐黄":"#d6bb38","绿豆褐":"#cdbf2b","苍黄":"#b2a216","香色":"#b69833","秋香":"#9f7d37","欧碧":"#d8e699","青古":"#c7cd8c","麴尘":"#c0d09d","葡萄水":"#b7c741","青芥":"#b7b94d","梅子青":"#a9bd70","苹果":"#a0bf52","绿茶":"#91b821","柳绿":"#83ad28","笋绿":"#84a740","葱绿":"#799a64","碧山":"#719847","秋葵":"#6b8c32","京绿":"#468c37","祖母绿":"#00953e","秧色":"#507936","明绿":"#49864d","青青":"#4c7548","竹绿":"#357944","官绿":"#00723c","松绿":"#3d6036","砂绿":"#425539","结绿":"#385c49","绿沈":"#354e40","沧浪":"#acd6cc","粉绿":"#b2c6bf","鹦哥绿":"#a5d1b5","豆青":"#a1bfb0","苍筤":"#93bdad","葱青":"#8cb7a2","水绿":"#8db799","麦绿":"#8eaf8c","四绿":"#6bb392","缥碧":"#7aa591","三绿":"#53976f","二绿":"#428d66","品绿":"#1c8d6c","头绿":"#347d5b","绿青":"#327a58","孔雀绿":"#007d62","吉绿":"#2a6868","铜青":"#326663","鸭色":"#28625c","青雘":"#007175","太师青":"#55767b","青雀头黛":"#153c46","老绿":"#1c2d29","墨绿":"#1c2d25","绿云":"#1d241b","螺子黛":"#14232b","冥色":"#02232b","青緺":"#1c2c34","无心绿":"#bfd1b2","绿矾":"#b4bda0","青灰":"#b3b59c","秘色":"#bfc096","田赤":"#b6ba91","艾绿":"#9daa6c","豆绿":"#91ae84","青圭":"#949261","秋瑰":"#878c50","苍苔":"#7b824d","蟹青":"#6d796a","油绿":"#506649","苍艾":"#465348","綟绶":"#2f372d","蜜合":"#e0d5af","血牙":"#e9d1b5","绢色":"#ead8ae","糙米":"#dbcba1","露褐":"#d2ae94","紫花布":"#bea78b","佛赤":"#c7935f","驼茸":"#9e725a","流黄":"#8b7040","枯黄":"#895d31","枯竹褐":"#82572d","茶色":"#765a35","驼褐":"#785034","古铜":"#604322","沉香":"#5f3f2b","油栗褐":"#604223","烟色":"#564232","鸦雏":"#483d34","鹰背褐":"#332425","玄天":"#2e201d","檀色":"#af6f60","酡绒":"#96462b","紫砂":"#7c4622","枣褐":"#552e1e","栗壳":"#50200a","檀褐":"#431919","酱色":"#402929","爵头":"#3d1508","茶绿褐":"#8e8570","紫赯":"#796860","蜜褐":"#644649","橄榄":"#77642a","昆布":"#554f30","牛绒":"#b8c1c4","鹤灰":"#a6abb6","银鼠":"#b0b4af","不皂":"#a8aba4","石涅":"#686b68","鼠毛":"#a8a19d","黑朱":"#70685c","沙石":"#69635d","金青":"#46443b","茶青":"#3f3b31","瓦灰":"#6e7171","黪墨":"#625d6b","铁色":"#595861","鹰背":"#39363f","烟墨":"#353538","朱墨":"#2d2d30","元青":"#28292b","石青":"#2e282e","袀玄":"#262729","铁棕":"#1a0404","燕尾青":"#131423","青骊":"#000013","乳白":"#fffef3","玉色":"#f8f7f0","蛤粉":"#ebeee1","二目鱼":"#efece6","葱白":"#ebeee8","浅云":"#e0f0eb","白垩":"#e0e1d9","云母":"#dfdad5","芦花":"#d4d3ca","石蜜":"#e4e5db","豆白":"#d5e0d5","余白":"#d5dbc6","半见":"#fffcdb","凝脂":"#f1f2e5","象牙":"#eeeadc","米汤娇":"#eeead9","缟素":"#e6e6dc","甘石":"#dbc4b0","东方亮":"#f5fbfe","银白":"#eff0f1","鹄白":"#ebeef0","甜白":"#eceff4","羊绒":"#eaebeb","卵白":"#e4ecf0","韶粉":"#e5e7e8","荻色":"#dfe5e8","葭灰":"#ddd4d3","鱼肚白":"#c8d0d3"};
+const sidebar=document.getElementById("sidebar");
+const colorName=document.getElementById("colorName");
+const hexDisplay=document.getElementById("hexDisplay");
+const tccIndex=document.getElementById("tccIndex");
+const entries=Object.entries(TCC);
+let activeIdx=0;
+
+function lum(r,g,b){return(0.299*r+0.587*g+0.114*b)/255}
+
+function setTextColor(hex){
+  const r=parseInt(hex.slice(1,3),16),g=parseInt(hex.slice(3,5),16),b=parseInt(hex.slice(5,7),16);
+  return lum(r,g,b)>.5?"#1a1a1a":"#f0ece4";
+}
+
+function selectColor(idx){
+  activeIdx=idx;
+  const[name,hex]=entries[idx];
+  const tc=setTextColor(hex);
+  document.body.style.background=hex;
+  document.body.style.color=tc;
+  colorName.textContent=name;
+  colorName.style.color=tc;
+  colorName.style.opacity='0';
+  colorName.style.transform='translateY(10px)';
+  colorName.style.transition='none';
+  colorName.offsetHeight;
+  colorName.style.transition='opacity .6s ease-out,transform .6s ease-out';
+  colorName.style.opacity='1';
+  colorName.style.transform='translateY(0)';
+  hexDisplay.textContent=hex.toUpperCase();
+  hexDisplay.style.color=tc;
+  tccIndex.textContent='TCC_'+(idx+1);
+  tccIndex.style.color=tc;
+  document.querySelectorAll('.sidebar-item').forEach((el,i)=>{
+    el.classList.toggle('selected',i===idx);
+    if(i===idx) el.scrollIntoView({block:'nearest',behavior:'smooth'});
+  });
+}
+
+entries.forEach(([name,hex],idx)=>{
+  const item=document.createElement('div');
+  item.className='sidebar-item';
+  item.innerHTML=`<div class="bar" style="background:${hex}"></div><div class="name">${name}</div>`;
+  item.addEventListener('click',()=>selectColor(idx));
+  sidebar.appendChild(item);
+});
+
+selectColor(0);
+
+hexDisplay.addEventListener('click',async()=>{
+  try{
+    await navigator.clipboard.writeText(entries[activeIdx][1]);
+    const orig=hexDisplay.textContent;
+    hexDisplay.textContent='copied';
+    setTimeout(()=>hexDisplay.textContent=orig,800);
+  }catch(e){}
+});
+tccIndex.addEventListener('click',async()=>{
+  try{
+    await navigator.clipboard.writeText('TCC_'+(activeIdx+1));
+    const orig=tccIndex.textContent;
+    tccIndex.textContent='copied';
+    setTimeout(()=>tccIndex.textContent=orig,800);
+  }catch(e){}
+});
+colorName.addEventListener('click',async()=>{
+  try{
+    await navigator.clipboard.writeText(entries[activeIdx][1]);
+    const orig=hexDisplay.textContent;
+    hexDisplay.textContent='copied';
+    setTimeout(()=>hexDisplay.textContent=orig,800);
+  }catch(e){}
+});
+</script>
+</body>
+</html>
