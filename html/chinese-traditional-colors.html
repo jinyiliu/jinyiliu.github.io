@@ -200,7 +200,7 @@ tccIndex.addEventListener('click',async()=>{
 });
 colorName.addEventListener('click',async()=>{
   try{
-    await navigator.clipboard.writeText(entries[activeIdx][1]);
+    await navigator.clipboard.writeText(entries[activeIdx][0]);
     const orig=hexDisplay.textContent;
     hexDisplay.textContent='copied';
     setTimeout(()=>hexDisplay.textContent=orig,800);
